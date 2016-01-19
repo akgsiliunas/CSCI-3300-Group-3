@@ -10,7 +10,7 @@ Steps for setting up repository:
 
 4. Put your forked repository url into Source Path
 
-5. Choose a location on your computer where the repository will reside locally (ie. documents/desktop)
+5. Choose a location on your computer where the repository will reside locally (ie. documents or desktop) and create a folder to store the repository (ie. desktop\CSCI3300Project)
 
 6. Clone your forked repository to your computer
 
