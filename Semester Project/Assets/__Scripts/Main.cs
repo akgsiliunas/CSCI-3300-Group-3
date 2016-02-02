@@ -5,13 +5,16 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour
 {
     static public Main S;
+	static public Dictionary<WeaponType,WeaponDefinition> W_DEFS;
 
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = 0.5f;
     public float enemySpawnPadding = 1.5f;
+	public WeaponDefinition[] weaponDefinitinos;
 
     public bool _;
 
+	public WeaponType[] activeWeaponTypes;
     public float enemySpawnRate;
 
     void Awake()
@@ -20,7 +23,26 @@ public class Main : MonoBehaviour
         Utils.SetCameraBounds(this.GetComponent<Camera>());
         enemySpawnRate = 1f / enemySpawnPerSecond;
         Invoke("SpawnEnemy", enemySpawnRate);
+
+		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
+		foreach (WeaponDefinition def in weaponDefinitinos) {
+			W_DEFS [def.type] = def;
+		}
+
     }
+
+	static public WeaponDefinition GetWeaponDefinition(WeaponType wt){
+		if (W_DEFS.ContainsKey(wt))
+			return (W_DEFS[wt]);
+		return(new WeaponDefinition());
+	}
+
+	void Start(){
+		activeWeaponTypes = new WeaponType[weaponDefinitinos.Length];
+		for (int i = 0; i < weaponDefinitinos.Length; i++) {
+			activeWeaponTypes [i] = weaponDefinitinos [i].type;
+		}
+	}
 
     public void SpawnEnemy()
     {
