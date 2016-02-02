@@ -1,0 +1,21 @@
+Group 3 - Sprint #1 Backlog
+Updated 2/1/2016
+
+Requirements
+
+Merge Enemy and Player Scene into One Scene
+Implement Enemy Movement
+Fix Spawning Bug with Enemy Class
+Implement 4 indpendent players
+Implement Player Damage
+Restart Game Upon Death
+Player Shooting
+Switch Camera from XY Plane to XZ Plane
+Adjust Movement Code to work with XZ Plane
+Implement Player Shield Damage
+Implement Enemy Damage
+Build Base of Cabinet
+Establish Cabinet Frame
+Attach Sides to Cabinet
+Create Joystick and Button Harnesses
+Player Shields
