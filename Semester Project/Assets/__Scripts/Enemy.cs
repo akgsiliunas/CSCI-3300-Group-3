@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour
     public float health = 10;
     public int score = 100;
 
-    public bool _;
+    public bool _____________________;
 
     public Bounds bounds;
     public Vector3 boundsCenterOffset;
 
-    void update()
+    void Update()
     {
         Move();
     }
@@ -37,11 +37,34 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Awake()
+    void OnCollisionEnter(Collision collider)
     {
-        InvokeRepeating("CheckOffscreen", 0f, 2f);
+        GameObject other = collider.gameObject;
+        if (other.tag == "ProjectileHero")
+        {
+            Projectile p = other.GetComponent<Projectile>();
+            health -= Main.W_DEFS[p.type].damageOnHit;
+
+            Debug.Log(Main.W_DEFS[p.type]);
+
+            Destroy(other);
+
+            if (health < 0)
+            {
+                Destroy(this.gameObject);
+                
+            }
+        }
     }
 
+
+
+
+    void Awake()
+    {
+        //InvokeRepeating("CheckOffscreen", 0f, 2f);
+    }
+    /*
     void CheckOffscreen()
     {
         if (bounds.size == Vector3.zero)
@@ -60,4 +83,5 @@ public class Enemy : MonoBehaviour
         }
 
     }
+    */
 }
