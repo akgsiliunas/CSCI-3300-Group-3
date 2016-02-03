@@ -28,13 +28,5 @@ public class Projectile : MonoBehaviour {
 		if (Utils.ScreenBoundsCheck (GetComponent<Collider> ().bounds, BoundsTest.offScreen) != Vector3.zero)
 			Destroy (this.gameObject);
 	}
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

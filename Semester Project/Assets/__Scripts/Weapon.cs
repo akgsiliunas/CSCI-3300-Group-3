@@ -11,20 +11,23 @@ public enum WeaponType{
 	shield
 }
 
-public class WeaponDefinition{
+[System.Serializable]
+public class WeaponDefinition {
 	public WeaponType type=WeaponType.none;
 	public string letter;
 	public Color color = Color.white;
 	public GameObject projectilePrefab;
 	public Color projectileColor = Color.white;
-	public float damageOnHit=0;
-	public float delayBetweenShots=0;
-	public float velocity=20;
+	public float damageOnHit = 0;
+    public float continuousDamage = 0;
+	public float delayBetweenShots = 0;
+	public float velocity = 20;
 }
 
 public class Weapon : MonoBehaviour {
 	static public Transform PROJECTILE_ANCHOR;
-	public bool _;
+
+	public bool ________________;
 	[SerializeField]
 	private WeaponType _type = WeaponType.blaster;
 	public WeaponDefinition def;
@@ -35,19 +38,20 @@ public class Weapon : MonoBehaviour {
 	void Start () {
 		collar = transform.Find ("Collar").gameObject;
 		SetType (_type);
+
 		if (PROJECTILE_ANCHOR == null) {
 			GameObject go = new GameObject ("_Projectile_Anchor");
 			PROJECTILE_ANCHOR = go.transform;
 		}
+
 		GameObject parentGo = transform.parent.gameObject;
 		if (parentGo.tag == "Hero")
 			Hero.S.fireDelegate += Fire;
-
 	}
 
 	public WeaponType type{
-		get {return (_type);}
-		set { SetType(value); }
+		get {   return (_type); }
+		set {   SetType(value); }
 	}
 
 	public void SetType(WeaponType wt){
@@ -63,29 +67,32 @@ public class Weapon : MonoBehaviour {
 		lastShot = 0;
 	}
 
-	public void Fire(){
-		if (!gameObject.activeInHierarchy)
-			return;
-		if (Time.time - lastShot < def.delayBetweenShots)
-			return;
-		Projectile p;
-		switch (type) {
-		case WeaponType.blaster:
-			p = MakeProjectile ();
-			p.GetComponent<Rigidbody>().velocity = Vector3.up * def.velocity;
-			break;
+    public void Fire()
+    {
+        if (Time.time - lastShot < def.delayBetweenShots)
+            return;
 
-		case WeaponType.spread:
-			p = MakeProjectile ();
-			p.GetComponent<Rigidbody>().velocity.velocity = Vector3.up * def.velocity;
-			p = MakeProjectile ();
-			p.GetComponent<Rigidbody>().velocity.velocity = new Vector3 (-0.2f, 0.9f, 0) * def.velocity;
-			p = MakeProjectile ();
-			p.GetComponent<Rigidbody>().velocity.velocity = new Vector3 (0.2f, 0.9f, 0) * def.velocity;
-			break;
-		}
-	}
+        Projectile p;
+        switch (type)
+        {
+            case WeaponType.blaster:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = Vector3.up * def.velocity;
+                break;
 
+
+            case WeaponType.spread:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = Vector3.up * def.velocity;
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = new Vector3(-0.2f, 0.9f, 0) * def.velocity;
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0.9f, 0) * def.velocity;
+                break;
+        }
+
+    }
+	
 	public Projectile MakeProjectile(){
 		GameObject go = Instantiate (def.projectilePrefab) as GameObject;
 		if (transform.parent.gameObject.tag == "Hero") {
@@ -101,10 +108,6 @@ public class Weapon : MonoBehaviour {
 		p.type = type;
 		lastShot = Time.time;
 		return p;
-	}
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
 

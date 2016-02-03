@@ -6,7 +6,12 @@ public class Hero : MonoBehaviour {
 	public float speed=30;
 	public float rollMult = -45;
 	public float pitchMult = 30;
-	public float shieldLevel=1;
+
+    [SerializeField]
+    private float _shieldLevel=1;
+
+    public int playerNumber;
+
 	public bool _____________;
 	public delegate void WeaponFireDelegate();
 	public WeaponFireDelegate fireDelegate;
@@ -14,15 +19,13 @@ public class Hero : MonoBehaviour {
 	void Awake(){
 		S = this;
 	}
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
 		float xAxis = Input.GetAxis ("Horizontal");
 		float yAxis = Input.GetAxis ("Vertical");
+
+        //Debug.Log(xAxis);
+
 		Vector3 pos = transform.position;
 		pos.x += xAxis * speed * Time.deltaTime;
 		pos.y += yAxis * speed * Time.deltaTime;
@@ -31,7 +34,40 @@ public class Hero : MonoBehaviour {
 
 		transform.rotation = Quaternion.Euler (yAxis * pitchMult, xAxis * rollMult, 0);
 
-		if (Input.GetAxis ("Jump") == 1 && fireDelegate != null)
-			fireDelegate ();
-	}
+        if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
+        {
+            fireDelegate();
+        }
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
+
+        if (rootGameObject.tag == "Enemy")
+        {
+            shieldLevel--;
+            Destroy(rootGameObject);
+        }
+    }
+
+    public float shieldLevel
+    {
+        get
+        {
+            return (_shieldLevel);
+        }
+        set
+        {
+            _shieldLevel = Mathf.Min(value, 4);
+            if (value < 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+
+
 }
