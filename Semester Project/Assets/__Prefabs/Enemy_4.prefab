@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3355946}
   - 135: {fileID: 13559728}
   - 23: {fileID: 2369702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cockpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3398142}
   - 135: {fileID: 13595100}
   - 23: {fileID: 2376948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 33: {fileID: 3388636}
   - 135: {fileID: 13574972}
   - 23: {fileID: 2304160}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuselage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 33: {fileID: 3387522}
   - 135: {fileID: 13507386}
   - 23: {fileID: 2342212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,9 +81,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 450048}
   - 54: {fileID: 5497558}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 170602}
