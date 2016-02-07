@@ -1,72 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero : MonoBehaviour {
-	static public Hero S;
-	public float speed=30;
-	public float rollMult = -45;
-	public float pitchMult = 30;
+public class Player : MonoBehaviour
+{
+   
+    public float speed = 30;
+    public float rollMult = -45;
+    public float pitchMult = 30;
 
     [SerializeField]
-    private float _shieldLevel=1;
+    private float _shieldLevel = 1;
 
     //Weapon Fields
     public Weapon[] weapons;
 
-    public int playerNumber;
+    public bool _____________;
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
 
-	public bool _____________;
-	public delegate void WeaponFireDelegate();
-	public WeaponFireDelegate fireDelegate;
-
-    void Awake() {
-        S = this;
-    }
 
     void Start()
     {
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
-	}
-	
-	void Update () {
-		float xAxis = Input.GetAxis ("Horizontal");
-		float yAxis = Input.GetAxis ("Vertical");
-        
-        //Debug.Log(xAxis);
-
-		Vector3 pos = transform.position;
-		pos.x += xAxis * speed * Time.deltaTime;
-		pos.y += yAxis * speed * Time.deltaTime;
-		transform.position = pos;
-
-
-		transform.rotation = Quaternion.Euler (yAxis * pitchMult, xAxis * rollMult, 0);
-
-        if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
-        {
-            Debug.Log("lol");
-            fireDelegate();
-        }
     }
 
-    /*
-    public void Move ()
+    public virtual void Update()
     {
-        if (playerNumber == 1)
-        {
-            if (Input.GetAxis)
-
-
-
-        }
-
-
 
     }
-    */
-
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -77,7 +39,7 @@ public class Hero : MonoBehaviour {
             shieldLevel--;
             Destroy(rootGameObject);
         }
-        else if( rootGameObject.tag == "PowerUp")
+        else if (rootGameObject.tag == "PowerUp")
         {
             AbsorbPowerUp(rootGameObject);
         }
@@ -148,7 +110,7 @@ public class Hero : MonoBehaviour {
             w.SetType(WeaponType.none);
         }
     }
-    
+
 
 
 

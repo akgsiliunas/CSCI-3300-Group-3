@@ -38,11 +38,20 @@ public class Weapon : MonoBehaviour {
     void Awake()
     {
         collar = transform.Find("Collar").gameObject;
+
+        GameObject parentGo = transform.parent.gameObject;
+        if (parentGo.tag == "Hero")
+        {
+            Debug.Log("tagged");
+            transform.root.GetComponent<Player>().fireDelegate += Fire;
+        }
+        //Hero.S.fireDelegate += Fire;
+
     }
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 		SetType (_type);
 
@@ -51,9 +60,7 @@ public class Weapon : MonoBehaviour {
 			PROJECTILE_ANCHOR = go.transform;
 		}
 
-		GameObject parentGo = transform.parent.gameObject;
-		if (parentGo.tag == "Hero")
-			Hero.S.fireDelegate += Fire;
+
 	}
 
 	public WeaponType type{
