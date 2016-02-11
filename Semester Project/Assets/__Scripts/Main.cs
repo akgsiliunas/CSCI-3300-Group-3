@@ -60,7 +60,8 @@ public class Main : MonoBehaviour
         float xMin = Utils.camBounds.min.x + enemySpawnPadding;
         float xMax = Utils.camBounds.max.x - enemySpawnPadding;
         pos.x = Random.Range(xMin, xMax);
-        pos.y = Utils.camBounds.max.y + enemySpawnPadding;
+        pos.z = -1*(Utils.camBounds.max.z + enemySpawnPadding);
+        //pos.y = Utils.camBounds.max.y + enemySpawnPadding;
         go.transform.position = pos;
         Invoke("SpawnEnemy", enemySpawnRate);
     }

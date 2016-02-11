@@ -32,20 +32,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
+        //GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
 
-        if (rootGameObject.tag == "Enemy")
+        if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
-            Destroy(rootGameObject);
+            Destroy(other.transform.root.gameObject);
         }
-        else if (rootGameObject.tag == "PowerUp")
+        else if (other.transform.root.tag == "PowerUp")
         {
-            AbsorbPowerUp(rootGameObject);
+            AbsorbPowerUp(other.transform.root.gameObject);
         }
         else
         {
-            Debug.Log(rootGameObject.tag);
+            //Debug.Log(other.transform.root.tag);
         }
     }
 

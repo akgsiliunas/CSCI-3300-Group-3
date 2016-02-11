@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour {
         GameObject parentGo = transform.parent.gameObject;
         if (parentGo.tag == "Hero")
         {
-            Debug.Log("tagged");
+            //Debug.Log("tagged");
             transform.root.GetComponent<Player>().fireDelegate += Fire;
         }
         //Hero.S.fireDelegate += Fire;
@@ -91,17 +91,20 @@ public class Weapon : MonoBehaviour {
         {
             case WeaponType.blaster:
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = Vector3.up * def.velocity;
+
+                //p.GetComponent<Rigidbody>().AddForce(Vector3.forward);
+
+                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
                 break;
 
 
             case WeaponType.spread:
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = Vector3.up * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = new Vector3(-0.2f, 0.9f, 0) * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = new Vector3(-0.2f, 0, -0.9f) * def.velocity;
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0.9f, 0) * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0, -0.9f) * def.velocity;
                 break;
         }
 

@@ -5,14 +5,20 @@ public class Shield : MonoBehaviour {
 	public float rotationPerSecond = 0.1f;
 	public bool __________;
 	public int levelShown = 0;
+
+    public Transform root;
+
+
 	// Use this for initialization
 	void Start () {
+
+        root = transform.root;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		int currLevel = Mathf.FloorToInt (transform.root.GetComponent<Player>().shieldLevel);
+		int currLevel = Mathf.FloorToInt (root.GetComponent<Player>().shieldLevel);
 		if (levelShown != currLevel) {
 			levelShown = currLevel;
 			Material mat = GetComponent<Renderer> ().material;
