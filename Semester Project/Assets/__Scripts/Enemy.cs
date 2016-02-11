@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform rallyPoint;
+
     public float speed = 10f;
     public float fireRate = 0.3f;
     public float health = 10;

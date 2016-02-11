@@ -92,9 +92,9 @@ public class Weapon : MonoBehaviour {
             case WeaponType.blaster:
                 p = MakeProjectile();
 
-                //p.GetComponent<Rigidbody>().AddForce(Vector3.forward);
+                p.GetComponent<Rigidbody>().velocity = transform.root.forward * def.velocity;
 
-                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
+                //p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
                 break;
 
 
