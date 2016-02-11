@@ -256,6 +256,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rallyPoint
+      value: 
+      objectReference: {fileID: 170402, guid: e25f807a43a34134b86cbe01259691f4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177224}

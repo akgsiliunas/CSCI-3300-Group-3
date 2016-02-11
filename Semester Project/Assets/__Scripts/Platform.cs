@@ -4,9 +4,9 @@ using System.Collections;
 
 public class Platform : MonoBehaviour {
 
-    public Camera mainCamera;
-
     public Vector3 newRotation;
+
+    public GameObject spawner;
 
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = 0.5f;
@@ -16,7 +16,8 @@ public class Platform : MonoBehaviour {
 
     void Awake()
     {
-        Utils.SetCameraBounds(mainCamera);
+        Debug.Log(spawner.GetComponent<Renderer>().bounds.center);
+
         enemySpawnRate = 1f / enemySpawnPerSecond;
         Invoke("SpawnEnemy", enemySpawnRate);
     }
@@ -31,17 +32,9 @@ public class Platform : MonoBehaviour {
     }
 
 
-    public void SpawnEnemy()
+    public virtual void SpawnEnemy()
     {
-        int ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
-        Vector3 pos = Vector3.zero;
-        float xMin = Utils.camBounds.min.x + enemySpawnPadding;
-        float xMax = Utils.camBounds.max.x - enemySpawnPadding;
-        pos.x = Random.Range(xMin, xMax);
-        pos.z = -1 * (Utils.camBounds.max.z + enemySpawnPadding);
-        go.transform.position = pos;
-        Invoke("SpawnEnemy", enemySpawnRate);
+        // Spawn Stuff
     }
 
 

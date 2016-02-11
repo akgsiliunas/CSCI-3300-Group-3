@@ -92,9 +92,9 @@ public class Weapon : MonoBehaviour {
             case WeaponType.blaster:
                 p = MakeProjectile();
 
-                p.GetComponent<Rigidbody>().velocity = transform.root.forward * def.velocity;
+                //p.GetComponent<Rigidbody>().velocity = transform.root.forward * def.velocity;
 
-                //p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
                 break;
 
 
@@ -120,7 +120,8 @@ public class Weapon : MonoBehaviour {
 			go.layer = LayerMask.NameToLayer ("ProjectileEnemy");
 		}
 		go.transform.position = collar.transform.position;
-		go.transform.parent = PROJECTILE_ANCHOR;
+        //go.transform.LookAt(transform.root.transform);
+        go.transform.parent = PROJECTILE_ANCHOR;
 		Projectile p = go.GetComponent<Projectile> ();
 		p.type = type;
 		lastShot = Time.time;

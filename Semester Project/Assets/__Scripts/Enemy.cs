@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform rallyPoint;
-
     public float speed = 10f;
     public float fireRate = 0.3f;
     public float health = 10;
@@ -25,7 +23,7 @@ public class Enemy : MonoBehaviour
     public virtual void Move()
     {
         Vector3 tempPos = pos;
-        tempPos.z -= -1 * speed * Time.deltaTime;
+        tempPos.x -= 1 * speed * Time.deltaTime;
         pos = tempPos;
     }
 

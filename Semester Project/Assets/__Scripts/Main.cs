@@ -30,7 +30,7 @@ public class Main : MonoBehaviour
         S = this;
         Utils.SetCameraBounds(this.GetComponent<Camera>());
         enemySpawnRate = 1f / enemySpawnPerSecond;
-        Invoke("SpawnEnemy", enemySpawnRate);
+        //Invoke("SpawnEnemy", enemySpawnRate);
 
 		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
 		foreach (WeaponDefinition def in weaponDefinitions) {
