@@ -92,15 +92,15 @@ public class Weapon : MonoBehaviour {
             case WeaponType.blaster:
                 p = MakeProjectile();
 
-                //p.GetComponent<Rigidbody>().velocity = transform.root.forward * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
 
-                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
+                //p.GetComponent<Rigidbody>().velocity = Vector3.left * def.velocity;
                 break;
 
 
             case WeaponType.spread:
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = Vector3.back * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
                 p = MakeProjectile();
                 p.GetComponent<Rigidbody>().velocity = new Vector3(-0.2f, 0, -0.9f) * def.velocity;
                 p = MakeProjectile();
@@ -112,6 +112,7 @@ public class Weapon : MonoBehaviour {
 	
 	public Projectile MakeProjectile(){
 		GameObject go = Instantiate (def.projectilePrefab) as GameObject;
+
 		if (transform.parent.gameObject.tag == "Hero") {
 			go.tag = "ProjectileHero";
 			go.layer = LayerMask.NameToLayer ("ProjectileHero");
@@ -120,7 +121,7 @@ public class Weapon : MonoBehaviour {
 			go.layer = LayerMask.NameToLayer ("ProjectileEnemy");
 		}
 		go.transform.position = collar.transform.position;
-        //go.transform.LookAt(transform.root.transform);
+        go.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
         go.transform.parent = PROJECTILE_ANCHOR;
 		Projectile p = go.GetComponent<Projectile> ();
 		p.type = type;

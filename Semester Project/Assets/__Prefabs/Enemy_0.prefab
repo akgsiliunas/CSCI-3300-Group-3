@@ -183,12 +183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da57696b27e656c4f88bc1fc51cf778d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
   fireRate: 0.3
-  health: 10
+  health: 1
   score: 100
   powerUpDropChance: 1
   _____________________: 0
+  movement: 0
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
@@ -260,6 +261,14 @@ Prefab:
       propertyPath: rallyPoint
       value: 
       objectReference: {fileID: 170402, guid: e25f807a43a34134b86cbe01259691f4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177224}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 2f;
     public float fireRate = 0.3f;
     public float health = 10;
     public int score = 100;
@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     public float powerUpDropChance = 1f;
 
     public bool _____________________;
+
+    public enum Movement { Left, Right, Top, Bottom};
+
+    public Movement movement;
 
     public Bounds bounds;
     public Vector3 boundsCenterOffset;
@@ -23,7 +27,19 @@ public class Enemy : MonoBehaviour
     public virtual void Move()
     {
         Vector3 tempPos = pos;
-        tempPos.x -= 1 * speed * Time.deltaTime;
+
+        if (movement == Movement.Left)
+            tempPos.x -= 1 * speed * Time.deltaTime;
+
+        else if( movement == Movement.Right)
+            tempPos.x -= -1 * speed * Time.deltaTime;
+
+        else if (movement == Movement.Top)
+            tempPos.z -= -1 * speed * Time.deltaTime;
+
+        else
+            tempPos.z -= 1 * speed * Time.deltaTime;
+
         pos = tempPos;
     }
 
@@ -42,6 +58,7 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
+
         if (other.tag == "ProjectileHero")
         {
             Projectile p = other.GetComponent<Projectile>();
