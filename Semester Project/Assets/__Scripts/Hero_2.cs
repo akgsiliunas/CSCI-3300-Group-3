@@ -9,12 +9,9 @@ public class Hero_2 : Player {
         float zAxis = Input.GetAxis("Hero_2_Vertical");
 
         Vector3 pos = transform.position;
-        pos.x += xAxis * speed * Time.deltaTime;
-        pos.z += zAxis * speed * Time.deltaTime;
+        pos.x += -xAxis * speed * Time.deltaTime;
+        pos.z += -zAxis * speed * Time.deltaTime;
         transform.position = pos;
-
-
-        transform.rotation = Quaternion.Euler(-90 + -zAxis * pitchMult, 0, -xAxis * rollMult);
 
         if (Input.GetKey("q") == true && fireDelegate != null)
             fireDelegate();

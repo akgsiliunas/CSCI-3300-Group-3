@@ -5,8 +5,6 @@ public class Player : MonoBehaviour
 {
    
     public float speed = 30;
-    public float rollMult = -45;
-    public float pitchMult = 30;
 
     [SerializeField]
     private float _shieldLevel = 1;
@@ -14,7 +12,6 @@ public class Player : MonoBehaviour
     //Weapon Fields
     public Weapon[] weapons;
 
-    public bool _____________;
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 

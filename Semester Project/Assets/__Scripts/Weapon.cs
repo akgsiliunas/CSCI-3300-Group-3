@@ -34,6 +34,10 @@ public class Weapon : MonoBehaviour {
 	public GameObject collar;
 	public float lastShot;
 
+    public Transform left;
+    public Transform right;
+    public Transform center;
+
 
     void Awake()
     {
@@ -91,20 +95,29 @@ public class Weapon : MonoBehaviour {
         {
             case WeaponType.blaster:
                 p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
 
-                p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
+                //p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
+
+               // reference.position - collar.transform.position
 
                 //p.GetComponent<Rigidbody>().velocity = Vector3.left * def.velocity;
                 break;
 
+    
 
             case WeaponType.spread:
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
+               // p.GetComponent<Rigidbody>().velocity = transform.root.up * def.velocity;
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = new Vector3(-0.2f, 0, -0.9f) * def.velocity;
+                p.GetComponent<Rigidbody>().velocity =  (left.position - collar.transform.position) * def.velocity;
+
+                //p.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(-0.2f,0,-0.9f) * def.velocity);
+
                 p = MakeProjectile();
-                p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0, -0.9f) * def.velocity;
+                p.GetComponent<Rigidbody>().velocity = (right.position - collar.transform.position) * def.velocity;
+                //p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0, -0.9f) * def.velocity;
                 break;
         }
 

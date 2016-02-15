@@ -13,9 +13,6 @@ public class Hero_1 : Player {
         pos.z += -zAxis * speed * Time.deltaTime;
         transform.position = pos;
 
-
-        //transform.rotation = Quaternion.Euler(-90 + -zAxis* pitchMult , 0 , -xAxis * rollMult);
-
         if (Input.GetKey("space") == true && fireDelegate != null)
             fireDelegate();
     }
