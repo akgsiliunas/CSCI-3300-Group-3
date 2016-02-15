@@ -19,17 +19,27 @@ Requirements
 --Implement Player Shield Damage
 --Implement Enemy Damage
 --Build Base of Cabinet
-++Build Sides of Cabinet
-++Install Counter into Cabinet
-++Build Top of Cabinet
+--Build Sides of Cabinet
+--Install Counter into Cabinet
+--Build Top of Cabinet
 --Establish Cabinet Frame
 --Attach Sides to Cabinet
-++Order 2nd joystick set
+--Order 2nd joystick set
 ==Create Joystick and Button Harnesses (need 2nd joystick set)
 --Player Shields
-++Add Platforms
-++Add Rotating Center Platform
-++SpawnEnemies on Platforms
-++Give options for direction for Enemy Movement
-++Reimplement Player Shooting with reference based shooting
-++Add killbox in center to destroy incoming enemies.
+--Add Platforms
+--Add Rotating Center Platform
+--SpawnEnemies on Platforms
+--Give options for direction for Enemy Movement
+--Reimplement Player Shooting with reference based shooting
+--Add killbox in center to destroy incoming enemies.
+++Implement variable direction for Enemy_1
+++Implement variable direction for Enemy_2
+++Implement variable direction for Enemy_3
+++Implement variable direction for Enemy_4
+++Fix Enemy_4 "Parts" bug
+++Implement Enemy_4 shooting
+++Implement Enemy_3 shooting
+++Create Start Screen with Game Title.
+++Create Script for Start Screen that reads in buttons '1' '2' '3' '4'.
+++Research different methods for keeping high score.
