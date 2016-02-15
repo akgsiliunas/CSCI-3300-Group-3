@@ -19,6 +19,13 @@ public class Enemy : MonoBehaviour
     public Bounds bounds;
     public Vector3 boundsCenterOffset;
 
+
+
+    void Start()
+    {
+        Orient();
+    }
+
     void Update()
     {
         Move();
@@ -53,6 +60,21 @@ public class Enemy : MonoBehaviour
         {
             this.transform.position = value;
         }
+    }
+
+    public virtual void Orient()
+    {
+        if (movement == Movement.Left)
+            transform.rotation = Quaternion.Euler(new Vector3(270, 90, 0));
+
+        else if (movement == Movement.Right)
+            transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
+
+        else if (movement == Movement.Top)
+            transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+
+        else
+            transform.rotation = Quaternion.Euler(new Vector3(-90, 0, 0));
     }
 
     void OnCollisionEnter(Collision collider)

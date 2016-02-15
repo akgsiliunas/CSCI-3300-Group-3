@@ -196,7 +196,7 @@ MonoBehaviour:
   boundsCenterOffset: {x: 0, y: 0, z: 0}
   waveFrequency: 2
   waveWidth: 4
-  waveRotY: 45
+  waveRot: 45
 --- !u!135 &13509118
 SphereCollider:
   m_ObjectHideFlags: 1
