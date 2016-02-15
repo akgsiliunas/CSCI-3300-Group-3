@@ -6,25 +6,29 @@ public class Enemy_1 : Enemy {
 
     public float waveFrequency = 2;
     public float waveWidth = 4;
-    public float waveRot = 10;
+    //public float waveRot = 10;
 
-    private float x0;   // The initial x value of pos
+    private float x0;  
     private float z0;
 
     private float birthTime;
 
-	// Use this for initialization
+
 	void Start () {
 
         base.Orient();
+
+        weapons[0].SetType(WeaponType.blaster);
 
         x0 = pos.x;
         z0 = pos.z; 
 
         birthTime = Time.time;
-	
-	}
-	
+
+        InvokeRepeating("Fire", fireRate, fireRate);
+
+    }
+
     public override void Move()
     {
         Vector3 tempPos = pos;
