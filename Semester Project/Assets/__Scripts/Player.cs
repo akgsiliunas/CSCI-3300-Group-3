@@ -5,8 +5,6 @@ public class Player : MonoBehaviour
 {
    
     public float speed = 30;
-    public float rollMult = -45;
-    public float pitchMult = 30;
 
     [SerializeField]
     private float _shieldLevel = 1;
@@ -14,7 +12,6 @@ public class Player : MonoBehaviour
     //Weapon Fields
     public Weapon[] weapons;
 
-    public bool _____________;
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
@@ -32,20 +29,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
+        //GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
 
-        if (rootGameObject.tag == "Enemy")
+        if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
-            Destroy(rootGameObject);
+            Destroy(other.transform.root.gameObject);
         }
-        else if (rootGameObject.tag == "PowerUp")
+        else if (other.transform.root.tag == "PowerUp")
         {
-            AbsorbPowerUp(rootGameObject);
+            AbsorbPowerUp(other.transform.root.gameObject);
         }
         else
         {
-            Debug.Log(rootGameObject.tag);
+            //Debug.Log(other.transform.root.tag);
         }
     }
 

@@ -30,7 +30,7 @@ public class Main : MonoBehaviour
         S = this;
         Utils.SetCameraBounds(this.GetComponent<Camera>());
         enemySpawnRate = 1f / enemySpawnPerSecond;
-        Invoke("SpawnEnemy", enemySpawnRate);
+        //Invoke("SpawnEnemy", enemySpawnRate);
 
 		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
 		foreach (WeaponDefinition def in weaponDefinitions) {
@@ -60,7 +60,8 @@ public class Main : MonoBehaviour
         float xMin = Utils.camBounds.min.x + enemySpawnPadding;
         float xMax = Utils.camBounds.max.x - enemySpawnPadding;
         pos.x = Random.Range(xMin, xMax);
-        pos.y = Utils.camBounds.max.y + enemySpawnPadding;
+        pos.z = -1*(Utils.camBounds.max.z + enemySpawnPadding);
+        //pos.y = Utils.camBounds.max.y + enemySpawnPadding;
         go.transform.position = pos;
         Invoke("SpawnEnemy", enemySpawnRate);
     }
