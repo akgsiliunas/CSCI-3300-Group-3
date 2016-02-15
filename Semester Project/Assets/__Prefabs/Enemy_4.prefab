@@ -81,6 +81,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450048}
   - 54: {fileID: 5497558}
+  - 114: {fileID: 11459896}
   m_Layer: 10
   m_Name: Enemy_4
   m_TagString: Enemy
@@ -297,8 +298,32 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &11459896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f176c1f623f5a5a4a96260c6064d9e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fireRate: 0.3
+  health: 10
+  score: 100
+  powerUpDropChance: 1
+  _____________________: 0
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  boundsCenterOffset: {x: 0, y: 0, z: 0}
+  points: []
+  timeStart: 0
+  duration: 4
 --- !u!135 &13507386
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -363,8 +388,8 @@ Prefab:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Constraints
-      value: 116
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
