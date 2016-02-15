@@ -1,21 +1,35 @@
 Group 3 - Sprint #1 Backlog
 Updated 2/1/2016
 
+++ represent added requirments
+-- represent implemented requirements
+== represent removed requirements
+
 Requirements
 
-Merge Enemy and Player Scene into One Scene
-Implement Enemy Movement
-Fix Spawning Bug with Enemy Class
-Implement 4 indpendent players
-Implement Player Damage
-Restart Game Upon Death
-Player Shooting
-Switch Camera from XY Plane to XZ Plane
-Adjust Movement Code to work with XZ Plane
-Implement Player Shield Damage
-Implement Enemy Damage
-Build Base of Cabinet
-Establish Cabinet Frame
-Attach Sides to Cabinet
-Create Joystick and Button Harnesses
-Player Shields
+--Merge Enemy and Player Scene into One Scene
+--Implement Enemy Movement
+--Fix Spawning Bug with Enemy Class
+--Implement 4 indpendent players
+--Implement Player Damage
+==Restart Game Upon Death
+--Player Shooting
+--Switch Camera from XY Plane to XZ Plane
+--Adjust Movement Code to work with XZ Plane
+--Implement Player Shield Damage
+--Implement Enemy Damage
+--Build Base of Cabinet
+++Build Sides of Cabinet
+++Install Counter into Cabinet
+++Build Top of Cabinet
+--Establish Cabinet Frame
+--Attach Sides to Cabinet
+++Order 2nd joystick set
+==Create Joystick and Button Harnesses (need 2nd joystick set)
+--Player Shields
+++Add Platforms
+++Add Rotating Center Platform
+++SpawnEnemies on Platforms
+++Give options for direction for Enemy Movement
+++Reimplement Player Shooting with reference based shooting
+++Add killbox in center to destroy incoming enemies.
