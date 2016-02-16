@@ -65,6 +65,18 @@ public class Main : MonoBehaviour
         go.transform.position = pos;
         Invoke("SpawnEnemy", enemySpawnRate);
     }
+    
+    public void DelayedRestart( float delay )
+    {
+    	// Invoke the Restart() method in delay seconds
+    	Invoke("Restart", delay);
+    }
+    
+    public void Restart()
+    {
+    	// Reload _Scene_0 to restart the game
+    	Application.LoadLevel("_Scene_0");
+    }
 
     public void ShipDestroyed( Enemy e)
     {
