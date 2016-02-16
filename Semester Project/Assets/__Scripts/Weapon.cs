@@ -44,6 +44,10 @@ public class Weapon : MonoBehaviour {
         collar = transform.Find("Collar").gameObject;
 
         GameObject parentGo = transform.parent.gameObject;
+
+        if (parentGo.tag == "Enemy")
+            transform.root.GetComponent<Enemy>().fireDelegate += Fire;
+
         if (parentGo.tag == "Hero")
         {
             //Debug.Log("tagged");

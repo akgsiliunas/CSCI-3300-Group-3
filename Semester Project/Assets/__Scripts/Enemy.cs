@@ -13,11 +13,23 @@ public class Enemy : MonoBehaviour
     public bool _____________________;
 
     public enum Movement { Left, Right, Top, Bottom};
-
     public Movement movement;
 
-    public Bounds bounds;
-    public Vector3 boundsCenterOffset;
+    public Weapon[] weapons;
+
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
+
+    void Start()
+    {
+        Orient();
+    }
+
+    public virtual void Fire() {
+
+        if (fireDelegate != null)
+            fireDelegate();
+    }
 
     void Update()
     {
@@ -55,6 +67,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public virtual void Orient()
+    {
+        if (movement == Movement.Left)
+            transform.rotation = Quaternion.Euler(new Vector3(270, -90, 0));
+
+        else if (movement == Movement.Right)
+            transform.rotation = Quaternion.Euler(new Vector3(270, 90, 0));
+
+        else if (movement == Movement.Top)
+            transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+
+        else
+            transform.rotation = Quaternion.Euler(new Vector3(-90, -180, 0));
+    }
+
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
@@ -77,31 +104,4 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
-
-    void Awake()
-    {
-        //InvokeRepeating("CheckOffscreen", 0f, 2f);
-    }
-    /*
-    void CheckOffscreen()
-    {
-        if (bounds.size == Vector3.zero)
-        {
-            bounds = Utils.CombineBoundsOfChildren(this.gameObject);
-            boundsCenterOffset = bounds.center - transform.position;
-        }
-        bounds.center = transform.position + boundsCenterOffset;
-        Vector3 off = Utils.ScreenBoundsCheck(bounds, BoundsTest.offScreen);
-        if (off != Vector3.zero)
-        {
-            if (off.y < 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
-    }
-    */
 }

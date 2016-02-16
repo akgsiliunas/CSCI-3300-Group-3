@@ -10,7 +10,11 @@ public class Platform : MonoBehaviour {
     {
         if (other.transform.root.tag == "Hero")
         {
-            other.transform.root.DORotateQuaternion(Quaternion.Euler(newRotation), 0.5f);
+           // other.transform.root.DORotateQuaternion(Quaternion.Euler(newRotation), 0.5f);
+
+            other.transform.root.DORotate(newRotation, 0.5f);
+
+            //other.transform.root.DoRo
             //other.transform.root.rotation = Quaternion.Euler(newRotation);
         }
     }
