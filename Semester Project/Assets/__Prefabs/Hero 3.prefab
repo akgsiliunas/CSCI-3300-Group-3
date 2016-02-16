@@ -1524,7 +1524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  _shieldLevel: 1
+  _shieldLevel: 5
+  maxShieldStrength: 10
   weapons:
   - {fileID: 11484242}
   - {fileID: 11483302}
@@ -1676,7 +1677,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _shieldLevel
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107416}

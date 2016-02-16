@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _shieldLevel = 1;
+    public float maxShieldStrength = 10;
 
     //Weapon Fields
     public Weapon[] weapons;
@@ -31,6 +32,12 @@ public class Player : MonoBehaviour
     {
         //GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
 
+        if (other.tag == "ProjectileEnemy")
+        {
+            Debug.Log("jasdfowaefjws");
+            shieldLevel--;
+            Destroy(other.transform.root.gameObject);
+        }
         if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
@@ -54,7 +61,7 @@ public class Player : MonoBehaviour
         }
         set
         {
-            _shieldLevel = Mathf.Min(value, 4);
+            _shieldLevel = Mathf.Min(value, maxShieldStrength);
             if (value < 0)
             {
                 Destroy(this.gameObject);

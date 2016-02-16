@@ -19,6 +19,9 @@ public class KillBox : MonoBehaviour {
 
         //Debug.Log(victim.tag);
 
+        if (victim.tag == "Projectile Enemy")
+            Destroy(victim);
+
         if (victim.transform.root.tag == "Enemy")
             Destroy(victim.transform.root.gameObject);
 
