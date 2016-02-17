@@ -99,7 +99,8 @@ public class Enemy : MonoBehaviour
             {
                 Main.S.ShipDestroyed(this);
                 Destroy(this.gameObject);
-                
+				Main.globalScore += score;
+				Debug.Log (Main.globalScore);
             }
         }
     }
