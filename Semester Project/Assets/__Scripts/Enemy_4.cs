@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+[System.Serializable]
 
 public class Part
 {
@@ -16,6 +17,7 @@ public class Enemy_4 : Enemy
     public Vector3[] points;
     public float timeStart;
     public float duration = 4;
+    public Part[] parts;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class Enemy_4 : Enemy
             if (t != null)
             {
                 prt.go = t.gameObject;
-                prt.mat = prt.go.renderer.material;
+// prt.mat = prt.go.renderer.material;
             }
         }
     }
@@ -99,7 +101,7 @@ public class Enemy_4 : Enemy
                 }
 
                 prtHit.health -= Main.W_DEFS[p.type].damageOnHit;
-                ShowLocalizedDamage(prtHit.mat);
+                //ShowLocalizedDamage(prtHit.mat);
                 if (prtHit.health <= 0)
                 {
                     prtHit.go.SetActive(false);
@@ -133,6 +135,7 @@ public class Enemy_4 : Enemy
                 return (prt);
             }
         }
+        return (null);
     }
     Part FindPart(GameObject go)
     {
@@ -163,9 +166,9 @@ public class Enemy_4 : Enemy
         return (prt.health <= 0);
     }
 
-    void ShowLocalizedDamage(Material m)
-    {
-        m.color = Color.red;
-        remainingDamageFrames = showDamageForFrames;
-    }
+//    void ShowLocalizedDamage(Material m)
+//    {
+//        m.color = Color.red;
+// remainingDamageFrames = showDamageForFrames;
+ //   }
 }
