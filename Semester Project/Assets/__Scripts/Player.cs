@@ -8,13 +8,20 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _shieldLevel = 1;
-    public float maxShieldStrength = 10;
+    public float maxShieldStrength = 50f;
 
     //Weapon Fields
     public Weapon[] weapons;
 
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
+
+    // Shield Regeneration Variables
+    public float regenTime = 1f;
+    public int regenAmount = 1;
+    private float timeChange = 0f;
+
+ 
 
 
     void Start()
@@ -28,13 +35,29 @@ public class Player : MonoBehaviour
 
     }
 
+    public void RegenShield()
+    {
+        Debug.Log(shieldLevel);
+        if (timeChange > regenTime)
+        {
+            
+            timeChange = 0f;
+            shieldLevel = Mathf.Min(maxShieldStrength, shieldLevel + regenAmount);
+            Debug.Log(shieldLevel);
+            Debug.Log("Regen amount is " + regenAmount);
+            Debug.Log("I'm regening");
+        }
+        else
+            timeChange += Time.deltaTime;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         //GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
 
         if (other.tag == "ProjectileEnemy")
         {
-            Debug.Log("jasdfowaefjws");
+           // Debug.Log("jasdfowaefjws");
             shieldLevel--;
             Destroy(other.transform.root.gameObject);
         }

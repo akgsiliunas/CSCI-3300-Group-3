@@ -1588,6 +1588,8 @@ MonoBehaviour:
   - {fileID: 11468218}
   - {fileID: 11424290}
   - {fileID: 11422882}
+  regenTime: 2
+  regenAmount: 1
 --- !u!114 &11446678
 MonoBehaviour:
   m_ObjectHideFlags: 1
