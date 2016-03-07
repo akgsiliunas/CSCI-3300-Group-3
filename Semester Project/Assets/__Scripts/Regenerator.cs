@@ -3,8 +3,16 @@ using System.Collections;
 
 public class Regenerator : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    // Shield Regeneration Variables
+    public float regenTime = 1f;
+    public int regenAmount = 1;
+    private float timeChange = 0f;
+
+
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -16,6 +24,21 @@ public class Regenerator : MonoBehaviour {
     void OnTriggerStay(Collider other)
     {
         if (other.transform.root.tag == "Hero")
-            other.transform.root.GetComponent<Player>().RegenShield();
+            RegenShield(other);
+
     }
+
+  
+
+    public void RegenShield(Collider hero)
+    {
+        if (timeChange > regenTime)
+        {
+            timeChange = 0f;
+            hero.transform.root.GetComponent<Player>().AddShieldLevel(regenAmount);
+        }
+        else
+            timeChange += Time.deltaTime;
+    }
+
 }

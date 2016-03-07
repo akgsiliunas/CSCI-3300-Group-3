@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     {
 
     }
+    
+    /*
 
     public void RegenShield()
     {
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
         else
             timeChange += Time.deltaTime;
     }
+    */
 
     void OnTriggerEnter(Collider other)
     {
@@ -90,6 +93,12 @@ public class Player : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    public void AddShieldLevel(int amount)
+    {
+        _shieldLevel = Mathf.Min(maxShieldStrength, _shieldLevel + amount);
+        Debug.Log(_shieldLevel);
     }
 
     public void AbsorbPowerUp(GameObject go)

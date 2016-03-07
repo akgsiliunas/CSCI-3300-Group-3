@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   _shieldLevel: 5
-  maxShieldStrength: 10
+  maxShieldStrength: 50
   weapons:
   - {fileID: 11463180}
   - {fileID: 11418594}
