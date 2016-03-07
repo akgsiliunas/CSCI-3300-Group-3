@@ -1497,13 +1497,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   _shieldLevel: 5
-  maxShieldStrength: 10
+  maxShieldStrength: 50
   weapons:
   - {fileID: 11463180}
   - {fileID: 11418594}
   - {fileID: 11462754}
   - {fileID: 11447774}
   - {fileID: 11462640}
+  regenTime: 1
+  regenAmount: 1
 --- !u!114 &11418594
 MonoBehaviour:
   m_ObjectHideFlags: 1
