@@ -110,9 +110,9 @@ GameObject:
   - 4: {fileID: 438998}
   - 114: {fileID: 11489038}
   - 54: {fileID: 5476562}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Worm 6
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -805,7 +805,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -860,11 +860,11 @@ HingeJoint:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167320}
-  m_ConnectedBody: {fileID: 5491084}
+  m_ConnectedBody: {fileID: 5497588}
   m_Anchor: {x: 0, y: -0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000003380756, y: 0.5800009, z: -0.00000058152233}
+  m_ConnectedAnchor: {x: 0.0000006148492, y: 0.6000002, z: -0.0000009828857}
   m_UseSpring: 1
   m_Spring:
     spring: 5000
@@ -988,11 +988,11 @@ HingeJoint:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178256}
-  m_ConnectedBody: {fileID: 5491084}
+  m_ConnectedBody: {fileID: 5415664}
   m_Anchor: {x: 0, y: -0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000003380756, y: 0.5800009, z: -0.00000058152233}
+  m_ConnectedAnchor: {x: 0.0000003771448, y: 0.5970707, z: -0.0000006006445}
   m_UseSpring: 1
   m_Spring:
     spring: 5000
@@ -1116,11 +1116,11 @@ HingeJoint:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134552}
-  m_ConnectedBody: {fileID: 5491084}
+  m_ConnectedBody: {fileID: 5492052}
   m_Anchor: {x: 0, y: -0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000003380756, y: 0.5800009, z: -0.00000058152233}
+  m_ConnectedAnchor: {x: 0.0000005629454, y: 0.63000035, z: -0.00000075623814}
   m_UseSpring: 1
   m_Spring:
     spring: 5000
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   fireRate: 0.3
-  health: 10
+  health: 1
   score: 100
   powerUpDropChance: 1
   _____________________: 0
