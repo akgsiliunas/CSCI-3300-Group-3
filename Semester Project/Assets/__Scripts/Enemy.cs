@@ -20,8 +20,11 @@ public class Enemy : MonoBehaviour
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
+    public ParticleSystem deathPS;
+
     void Start()
     {
+        deathPS.Pause();
         Orient();
     }
 
@@ -97,8 +100,9 @@ public class Enemy : MonoBehaviour
 
             if (health < 0)
             {
+                deathPS.Play();
                 Main.S.ShipDestroyed(this);
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, 0.7f);
                 
             }
         }
