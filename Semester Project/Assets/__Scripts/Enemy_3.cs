@@ -21,6 +21,21 @@ public class Enemy_3 : Enemy
 
     private float birthTime;
 
+    void Start()
+    {
+
+        base.Orient();
+
+       // weapons[0].SetType(WeaponType.blaster);
+
+        x0 = pos.x;
+        z0 = pos.z;
+
+        birthTime = Time.time;
+
+        //InvokeRepeating("Fire", fireRate, fireRate);
+
+    }
 
 
     public override void Move()
