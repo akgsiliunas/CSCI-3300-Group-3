@@ -40,6 +40,7 @@ public class Enemy_3 : Enemy
 
     public override void Move()
     {
+        /*
         Vector3 tempPos = pos;
         float age = Time.time - birthTime;
         float theta = Mathf.PI * 2 * age / waveFrequency;
@@ -56,7 +57,7 @@ public class Enemy_3 : Enemy
         // Rotate
         //Vector3 rot = new Vector3(-90, 0, sin * waveRot);
         //this.transform.rotation = Quaternion.Euler(rot);
-
+        */
         base.Move();
     }
 
