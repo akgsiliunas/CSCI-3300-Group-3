@@ -8,7 +8,24 @@ public class Enemy_2 : Enemy {
 	public float		lifeTime = 10;
 	// Determines how much the Sine wave will affect movement
 	public float		sinEccentricity = 0.6f;
-	
+
+    void Start()
+    {
+
+        base.Orient();
+
+        weapons[0].SetType(WeaponType.blaster);
+
+        //x0 = pos.x;
+        //z0 = pos.z;
+
+        birthTime = Time.time;
+
+        InvokeRepeating("Fire", fireRate, fireRate);
+
+    }
+
+    /*
 	void Start () {
 		// Initialize the points
 		points = new Vector3[2];
@@ -57,4 +74,5 @@ public class Enemy_2 : Enemy {
 		// Interpolate the two linear interpolation points
 		pos = (1-u)*points[0] + u*points[1];
 	}
+    */
 }
