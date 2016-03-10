@@ -23,12 +23,7 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
-    public void Die()
-    {
-        deathPS.Play();
-        Main.S.ShipDestroyed(this);
-        Destroy(this.gameObject, 0.7f);
-    }
+
 
     void Start()
     {
@@ -108,13 +103,16 @@ public class Enemy : MonoBehaviour
 
             if (health < 0)
             {
-                // deathPS.Play();
-                Die();
-                //Main.S.ShipDestroyed(this);
-                //Destroy(this.gameObject, 0.7f);
-                
+                Die(); 
             }
         }
+    }
+
+    public void Die()
+    {
+        deathPS.Play();
+        Main.S.ShipDestroyed(this);
+        Destroy(this.gameObject, 0.7f);
     }
 
 }
