@@ -53,7 +53,7 @@ public class Core : MonoBehaviour {
 
     IEnumerator Counting() //this is for counting timer
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         Application.LoadLevel(0);
     }
 }
