@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float fireRate = 0.3f;
     public float health = 10;
     public int score = 100;
+    public float collideDamage = 50f;
 
     public float powerUpDropChance = 1f;
 
@@ -20,8 +21,13 @@ public class Enemy : MonoBehaviour
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
+    public ParticleSystem deathPS;
+
+
+
     void Start()
     {
+        deathPS.Pause();
         Orient();
     }
 
@@ -97,12 +103,16 @@ public class Enemy : MonoBehaviour
 
             if (health < 0)
             {
-                Main.S.ShipDestroyed(this);
-                Destroy(this.gameObject);
-                //Main.S.globalScore += score;
-
+                Die(); 
             }
         }
+    }
+
+    public void Die()
+    {
+        deathPS.Play();
+        Main.S.ShipDestroyed(this);
+        Destroy(this.gameObject, 0.7f);
     }
 
 }
