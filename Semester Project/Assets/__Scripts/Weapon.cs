@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour {
             //Debug.Log("tagged");
             transform.root.GetComponent<Player>().fireDelegate += Fire;
         }
-        //Hero.S.fireDelegate += Fire;
+        Hero.S.fireDelegate += Fire;
 
     }
 
