@@ -11,6 +11,7 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = 0.5f;
     public float enemySpawnPadding = 1.5f;
 	public WeaponDefinition[] weaponDefinitions;
+	static public int globalScore = 0;
 
     public GameObject prefabPowerUp;
     public WeaponType[] powerUpFrequency = new WeaponType[]
