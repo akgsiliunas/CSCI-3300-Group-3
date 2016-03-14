@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class Hero_1 : Player {
-	
+	static public int score;
+	void start(){
+		score = 0;
+	}
 	public override void Update()
     {
         float xAxis = Input.GetAxis("Hero_1_Horizontal");
@@ -13,7 +16,8 @@ public class Hero_1 : Player {
         pos.z += -zAxis * speed * Time.deltaTime;
         transform.position = pos;
 
-        if (Input.GetKey("space") == true && fireDelegate != null)
-            fireDelegate();
+		if (Input.GetKey ("space") == true && fireDelegate != null) {
+			fireDelegate ();
+		}
     }
 }

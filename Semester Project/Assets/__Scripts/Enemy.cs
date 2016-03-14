@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
     {
         GameObject other = collider.gameObject;
 
-        if (other.tag == "ProjectileHero")
+        if (other.tag == "ProjectileHero1")
         {
             Projectile p = other.GetComponent<Projectile>();
             health -= Main.W_DEFS[p.type].damageOnHit;
@@ -101,6 +101,7 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
 				Main.globalScore += score;
 				Debug.Log (Main.globalScore);
+
             }
         }
     }
