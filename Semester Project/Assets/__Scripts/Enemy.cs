@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
         deathPS.Play();
         Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
+		ScoreManager.SM.addScore(score);
     }
 
 }
