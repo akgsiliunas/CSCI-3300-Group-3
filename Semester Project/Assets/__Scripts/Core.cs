@@ -6,22 +6,31 @@ public class Core : MonoBehaviour {
 
     static public Core C;
 
-    public float health = 1000;
-    public float fullHealth = 1000;
-
+    //public float health = 1000;
+	
+	[SerializeField]
+	private Stat health;
+	//health.currentVal = 1000;
+	//health.maxVal = 1000;
+    
+	//public float fullHealth = 1000;
+	
+	
+	
     public Animator coreAnimator;
     public ParticleSystem deathPS;
 
     void Awake()
     {
+		health.Initialize();
         C = this;
-        coreAnimator.SetFloat("Health", fullHealth);
+        coreAnimator.SetFloat("Health", health.MaxVal);
         deathPS.Pause();
     }
-
+	
 	void Update () {
 
-        if (health < 0)
+        if (health.CurrentVal <= 0)
         {
             deathPS.Play();
             StartCoroutine("Counting");
@@ -29,13 +38,13 @@ public class Core : MonoBehaviour {
         }
 
         Debug.Log(health);
-        coreAnimator.SetFloat("Health", health);
+        coreAnimator.SetFloat("Health", health.CurrentVal);
     }
 
 
     public void Damage(float damageValue)
     {
-        health -= damageValue;
+        health.CurrentVal -= damageValue;
     }
 
 
@@ -46,7 +55,7 @@ public class Core : MonoBehaviour {
         if (other.tag == "ProjectileEnemy")
         {
             Projectile p = other.GetComponent<Projectile>();
-            health -= Main.W_DEFS[p.type].damageOnHit;
+            health.CurrentVal -= Main.W_DEFS[p.type].damageOnHit;
             Destroy(other);
         }
     }
