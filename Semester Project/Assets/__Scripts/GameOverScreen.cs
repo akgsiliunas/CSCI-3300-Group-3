@@ -4,16 +4,21 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
+    public int score;
+    public Text scoretext;
     public string[] Alphabets;
     public int[] selectedNO;
     public Text[] SelectedText;
-    public static GameOverScreen Instance;
-    public GameObject Panel;
+  
+   // public GameObject Panel;
     public static string playerfullname;
+    public int num;
 
 	void OnEnable ()
     {
-        Instance = this;
+        score = Random.Range(10000,50000);// this is just testing until we have the original score.
+        scoretext.text = score.ToString();// we have to set score to this int variaable score when we have it.
+        // Instance = this;
 
         selectedNO[0] = 0;
         selectedNO[1] = 0;
@@ -22,22 +27,55 @@ public class GameOverScreen : MonoBehaviour
         SelectedText[0].text = Alphabets[selectedNO[0]];
         SelectedText[1].text = Alphabets[selectedNO[1]];
         SelectedText[2].text = Alphabets[selectedNO[2]];
-
+        num = 1;
     }
 
-    public void ShowPanel()
+    void Update()
     {
-        Panel.SetActive(true);
-    }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            UpButton(num);
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            DownButton(num);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            num++;
+            if (num == 4)
+            {
+                Debug.Log("save name and score");
+                if (PlayerPrefs.HasKey("name"))
+                {
+                    string s1 = PlayerPrefs.GetString("name");
+                    PlayerPrefs.SetString("name", s1 + "_" + Alphabets[selectedNO[0]] + Alphabets[selectedNO[1]] + Alphabets[selectedNO[2]]);
+                    PlayerPrefs.Save();
 
-    public void PanelClose()
-    {
-        Panel.SetActive(false);
-        playerfullname = Alphabets[selectedNO[0]] + Alphabets[selectedNO[1]] + Alphabets[selectedNO[2]];
+                    string s2 = PlayerPrefs.GetString("score");
+                    PlayerPrefs.SetString("score", s2 + "_" + score);
+                    PlayerPrefs.Save();
+
+                    Debug.Log(PlayerPrefs.GetString("name"));
+                    Debug.Log(PlayerPrefs.GetString("score"));
+                }
+                else
+                {
+                    PlayerPrefs.SetString("name", Alphabets[selectedNO[0]] + Alphabets[selectedNO[1]] + Alphabets[selectedNO[2]]);
+                    PlayerPrefs.Save();
+
+                    PlayerPrefs.SetString("score", score.ToString());
+                    PlayerPrefs.Save();
+
+                    Debug.Log(PlayerPrefs.GetString("name"));
+                    Debug.Log(PlayerPrefs.GetString("score"));
+                }
+
+
+             
+            }
+        }
     }
-   //go to any script and call GameOverScreen.Instance.ShowPanel(); it will open the gameover popup
-   // to close the popup use method  GameOverScreen.Instance.PanelClose();
-// to get player name use   string name = GameOverScreen.playerfullname;
 
     public void UpButton(int num)
     {

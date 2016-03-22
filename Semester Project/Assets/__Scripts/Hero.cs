@@ -99,6 +99,7 @@ public class Hero : MonoBehaviour {
             if (value < 0)
             {
                 Destroy(this.gameObject);
+                Debug.Log("is it over?");
             }
         }
     }
