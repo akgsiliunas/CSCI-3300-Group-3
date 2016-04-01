@@ -6,7 +6,11 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public float fireRate = 0.3f;
     public float health = 10;
+<<<<<<< HEAD
     public static int score = 100;
+=======
+    public int score;
+>>>>>>> upstream/master
     public float collideDamage = 50f;
     public static int kills = 0;
 
@@ -114,8 +118,12 @@ public class Enemy : MonoBehaviour
         deathPS.Play();
         Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
+<<<<<<< HEAD
         score += 10;
         kills++;
+=======
+		ScoreManager.SM.addScore(score);
+>>>>>>> upstream/master
     }
 
 }

@@ -37,7 +37,7 @@ public class Core : MonoBehaviour {
 
         }
 
-        Debug.Log(health);
+      //  Debug.Log(health);
         coreAnimator.SetFloat("Health", health.CurrentVal);
     }
 
@@ -63,6 +63,7 @@ public class Core : MonoBehaviour {
     IEnumerator Counting() //this is for counting timer
     {
         yield return new WaitForSeconds(10);
-        Application.LoadLevel(0);
+        Debug.Log("Here is game over"); // Abdullah edit it
+        Application.LoadLevel(2);
     }
 }

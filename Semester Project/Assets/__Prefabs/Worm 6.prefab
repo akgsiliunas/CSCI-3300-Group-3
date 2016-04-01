@@ -1316,7 +1316,8 @@ MonoBehaviour:
   speed: 2
   fireRate: 0.3
   health: 1
-  score: 100
+  score: 150
+  collideDamage: 50
   powerUpDropChance: 1
   _____________________: 0
   movement: 0
@@ -3012,7 +3013,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: score
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159292}

@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
             if (value < 0)
             {
                 Destroy(this.gameObject);
+                Debug.Log("is it over?and out");
             }
         }
     }
