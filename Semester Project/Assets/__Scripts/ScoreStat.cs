@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 
 [Serializable]
-public class Stat
+public class ScoreStat
 {
 	[SerializeField]
-	private BarScript bar;
+	private ScoreBarScript sBar;
 
 	//[SerializeField]
 	//private ScoreBarScript sBar;
@@ -27,8 +27,8 @@ public class Stat
 		set
 		{
 			this.currentVal = Mathf.Clamp(value, 0, MaxVal);
-			bar.Value = currentVal;
-			//sBar.Value = currentVal;
+			//bar.Value = currentVal;
+			sBar.Value = currentVal;
 		}
 	}
 	
@@ -42,8 +42,8 @@ public class Stat
 		set
 		{
 			this.maxVal = value;
-			bar.MaxValue = maxVal;
-			//sBar.MaxValue = maxVal;
+			//bar.MaxValue = maxVal;
+			sBar.MaxValue = maxVal;
 		}
 	}
 	
