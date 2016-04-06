@@ -17,7 +17,8 @@ public class GameOverScreen : MonoBehaviour
 
 	void OnEnable ()
     {
-        score = Random.Range(10000,50000);// this is just testing until we have the original score.
+        score = ScoreManager.SM.globalScore;
+        //score = Random.Range(10000,50000);// this is just testing until we have the original score.
         scoretext.text = score.ToString();// we have to set score to this int variaable score when we have it.
         // Instance = this;
 
