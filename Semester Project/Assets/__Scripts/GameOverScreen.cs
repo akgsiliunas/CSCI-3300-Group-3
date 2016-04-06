@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class GameOverScreen : MonoBehaviour
 
                     Debug.Log(PlayerPrefs.GetString("name"));
                     Debug.Log(PlayerPrefs.GetString("score"));
+                   // Application.LoadLevel(3);
+                  //  SceneManager.LoadScene(3);
                 }
                 else
                 {
@@ -71,8 +74,8 @@ public class GameOverScreen : MonoBehaviour
                     Debug.Log(PlayerPrefs.GetString("score"));
                 }
 
+                SceneManager.LoadScene(3);
 
-             
             }
         }
     }
