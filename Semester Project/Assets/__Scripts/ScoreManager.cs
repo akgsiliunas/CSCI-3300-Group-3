@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 	public int globalScore;
 	
 	[SerializeField]
-	private Stat globalScoreStat;
+	private ScoreStat globalScoreStat;
 	
 	public void addScore(int addedScore)
 	{
@@ -26,8 +26,8 @@ public class ScoreManager : MonoBehaviour
 	{
 		SM = this;
 		globalScoreStat.Initialize();
-		//DontDestroyOnLoad(transform.gameObject);
-	}
+        DontDestroyOnLoad(transform.gameObject);
+    }
 	
 	// Use this for initialization
 	void Start () {
