@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class GameOverScreen : MonoBehaviour
 
 	void OnEnable ()
     {
-        score = Random.Range(10000,50000);// this is just testing until we have the original score.
+        score = ScoreManager.SM.globalScore;
+        //score = Random.Range(10000,50000);// this is just testing until we have the original score.
         scoretext.text = score.ToString();// we have to set score to this int variaable score when we have it.
         // Instance = this;
 
@@ -58,6 +60,8 @@ public class GameOverScreen : MonoBehaviour
 
                     Debug.Log(PlayerPrefs.GetString("name"));
                     Debug.Log(PlayerPrefs.GetString("score"));
+                   // Application.LoadLevel(3);
+                  //  SceneManager.LoadScene(3);
                 }
                 else
                 {
@@ -71,8 +75,8 @@ public class GameOverScreen : MonoBehaviour
                     Debug.Log(PlayerPrefs.GetString("score"));
                 }
 
+                SceneManager.LoadScene(3);
 
-             
             }
         }
     }

@@ -23,8 +23,6 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
-
-
     void Start()
     {
         deathPS.Pause();
@@ -88,6 +86,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(-90, -180, 0));
     }
 
+    /*
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
@@ -107,13 +106,26 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    */
+
+    public void GatherHit(GameObject other)
+    {
+        Projectile p = other.GetComponent<Projectile>();
+        health -= Main.W_DEFS[p.type].damageOnHit;
+
+        if (health < 0)
+        {
+            ScoreManager.SM.addScore(score);
+            Die();
+        }
+    }
+
 
     public void Die()
     {
         deathPS.Play();
         Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
-		ScoreManager.SM.addScore(score);
     }
 
 }
