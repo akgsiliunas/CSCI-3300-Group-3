@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     public GameObject shield3;
     public GameObject shield4;
 
-    
+
 
     public bool TestMode,DebugMode;
 	//public static string PlayerName;

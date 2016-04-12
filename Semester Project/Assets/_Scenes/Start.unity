@@ -480,7 +480,7 @@ MonoBehaviour:
   shield4: {fileID: 1168892654}
   TestMode: 0
   DebugMode: 0
-  LoadingTime: 10
+  LoadingTime: 1
   OutPutText: {fileID: 617365260}
   TimerText: {fileID: 248511917}
 --- !u!4 &607686248

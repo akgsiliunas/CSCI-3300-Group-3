@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour
-{
-    public float speed = 2f;
-    public float fireRate = 0.3f;
-    public float health = 10;
+{	
+	public float level=1f;
+	public float speed = 2f;
+	public float fireRate = 0.3f;
+	public float health = 10;
     public int score;
     public float collideDamage = 50f;
 
