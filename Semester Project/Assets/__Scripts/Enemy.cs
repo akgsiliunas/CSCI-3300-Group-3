@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 2000;
-    public float fireRate = 0.3f * UIManager.DiffLevel;
-    public float health = 10 * UIManager.DiffLevel;
+    public float speed = 2.0f * UIManager.UM.DiffLevel;
+    public float fireRate = 0.3f * UIManager.UM.DiffLevel;
+    public float health = 10 * UIManager.UM.DiffLevel;
     public int score;
     public float collideDamage = 50f;
 
@@ -25,11 +25,11 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("speed: " + this.speed);
+        //Debug.Log("speed: " + this.speed);
         deathPS.Pause();
         Orient();
-        Debug.Log("health: " + health);
-        Debug.Log("Rate: " + fireRate);
+        //Debug.Log("health: " + health);
+        //Debug.Log("Rate: " + fireRate);
     }
 
     public virtual void Fire() {

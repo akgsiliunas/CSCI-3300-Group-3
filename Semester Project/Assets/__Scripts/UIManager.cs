@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    static public UIManager UM;
 
     public bool player1 = false;
     public bool player2 = false;
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
     //public static readonly float Hard = 300;
     //public static readonly float ExtremelyHard = 4000;
 
-    public static float DiffLevel;
+    public float DiffLevel;
 
     
 
@@ -46,7 +47,6 @@ public class UIManager : MonoBehaviour
 	public Text OutPutText;
 	public Text TimerText;
     //private bool InputDisable;
-
 
 
 
@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
         {      
             if (Input.GetKey("z") == true)
             {
-                DiffLevel = 0.05f;
+                DiffLevel = 0.5f;
             }
 
             if (Input.GetKey("x") == true)
@@ -75,17 +75,17 @@ public class UIManager : MonoBehaviour
 
             if (Input.GetKey("c") == true)
             {
-                DiffLevel = 20;
+                DiffLevel = 2;
             }
 
             if (Input.GetKey("v") == true)
             {
-                DiffLevel = 300;
+                DiffLevel = 3;
             }
 
             if (Input.GetKey("b") == true)
             {
-                DiffLevel = 4000;
+                DiffLevel = 4;
             }
 
             if (Input.GetKey("1") == true && player1 == false)
@@ -163,7 +163,8 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-       // DontDestroyOnLoad(transform.gameObject);
+        // DontDestroyOnLoad(transform.gameObject);
+        UM = this;
     }
 
 
