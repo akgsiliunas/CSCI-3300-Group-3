@@ -29,6 +29,14 @@ public class UIManager : MonoBehaviour
     public GameObject shield3;
     public GameObject shield4;
 
+    //public static readonly float Tutorial = 0.01f;
+    //public static readonly float Easy = 1;
+    //public static readonly float Normal = 20;
+    //public static readonly float Hard = 300;
+    //public static readonly float ExtremelyHard = 4000;
+
+    public static float DiffLevel;
+
     
 
     public bool TestMode,DebugMode;
@@ -55,6 +63,31 @@ public class UIManager : MonoBehaviour
 
         if (startScreen == true)
         {      
+            if (Input.GetKey("z") == true)
+            {
+                DiffLevel = 0.05f;
+            }
+
+            if (Input.GetKey("x") == true)
+            {
+                DiffLevel = 1;
+            }
+
+            if (Input.GetKey("c") == true)
+            {
+                DiffLevel = 20;
+            }
+
+            if (Input.GetKey("v") == true)
+            {
+                DiffLevel = 300;
+            }
+
+            if (Input.GetKey("b") == true)
+            {
+                DiffLevel = 4000;
+            }
+
             if (Input.GetKey("1") == true && player1 == false)
             {
                 player1 = true;

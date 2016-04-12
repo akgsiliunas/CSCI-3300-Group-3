@@ -3,16 +3,11 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 2f;
-    public float fireRate = 0.3f;
-    public float health = 10;
-<<<<<<< HEAD
-    public static int score = 100;
-=======
+    public float speed = 2000;
+    public float fireRate = 0.3f * UIManager.DiffLevel;
+    public float health = 10 * UIManager.DiffLevel;
     public int score;
->>>>>>> upstream/master
     public float collideDamage = 50f;
-    public static int kills = 0;
 
     public float powerUpDropChance = 1f;
 
@@ -30,8 +25,11 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("speed: " + this.speed);
         deathPS.Pause();
         Orient();
+        Debug.Log("health: " + health);
+        Debug.Log("Rate: " + fireRate);
     }
 
     public virtual void Fire() {
@@ -61,6 +59,7 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
+        Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
@@ -131,15 +130,6 @@ public class Enemy : MonoBehaviour
         deathPS.Play();
         Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        score += 10;
-        kills++;
-=======
-		ScoreManager.SM.addScore(score);
->>>>>>> upstream/master
-=======
->>>>>>> upstream/master
     }
 
 }

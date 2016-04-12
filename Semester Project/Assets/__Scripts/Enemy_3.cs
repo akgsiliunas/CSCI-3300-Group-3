@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Enemy_3 : Enemy
 {
+    //public float speed = 2.0f * UIManager.DiffLevel;
+
     public float waveFrequency = 2;
     public float waveWidth = 4;
 

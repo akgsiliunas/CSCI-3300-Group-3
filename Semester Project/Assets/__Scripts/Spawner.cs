@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour {
     {
        // enemySpawnRate = 1f / enemySpawnPerSecond;
         Invoke("SpawnEnemy", enemySpawnRate);
+        Debug.Log(enemySpawnRate);
     }
 
     public void SpawnEnemy()
