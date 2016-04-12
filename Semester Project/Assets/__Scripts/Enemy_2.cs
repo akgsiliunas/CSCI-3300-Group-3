@@ -2,8 +2,10 @@
 using System.Collections;
 
 public class Enemy_2 : Enemy {
-	// Enemy_2 uses a Sine wave to modify a 2-point linear interpolation
-	public Vector3[]	points;
+    //public float speed = 2.0f * UIManager.DiffLevel;
+
+    // Enemy_2 uses a Sine wave to modify a 2-point linear interpolation
+    public Vector3[]	points;
 	public float		birthTime;
 	public float		lifeTime = 10;
 	// Determines how much the Sine wave will affect movement
