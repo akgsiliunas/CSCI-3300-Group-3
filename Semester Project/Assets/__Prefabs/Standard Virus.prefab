@@ -470,6 +470,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 11456030}
   deathPS: {fileID: 19848666}
+  speed: 5
   waveFrequency: 2
   waveWidth: 4
 --- !u!198 &19848666
