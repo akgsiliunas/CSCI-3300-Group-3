@@ -4,6 +4,8 @@ using System.Collections;
 
 public class Part
 {
+    //public float speed = 2.0f * UIManager.DiffLevel;
+
     public string name;
     public float health;
     public string[] protectedBy;
