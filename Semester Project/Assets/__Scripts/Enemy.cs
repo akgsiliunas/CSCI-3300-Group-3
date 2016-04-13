@@ -3,6 +3,23 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyType
+    {
+        bitRusher,
+        standardVirus,
+        rookVirus,
+        worm,
+        boss,
+    }
+
+    [System.Serializable]
+    public class EnemyDefinition
+    {
+        public EnemyType type = EnemyType.bitRusher;
+        public GameObject enemyPrefab;
+        public float spawnprobability;
+    }
+
     public float speed = 2.0f * UIManager.UM.DiffLevel;
     public float fireRate = 0.3f * UIManager.UM.DiffLevel;
     public float health = 10 * UIManager.UM.DiffLevel;
