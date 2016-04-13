@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 474296}
   - 33: {fileID: 3362692}
   - 135: {fileID: 13513994}
-  - 54: {fileID: 5447880}
   - 114: {fileID: 11403860}
+  - 54: {fileID: 5430924}
   m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
@@ -141,9 +141,9 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!54 &5447880
+--- !u!54 &5430924
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,7 +154,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -200,7 +200,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19854374
 ParticleSystem:
