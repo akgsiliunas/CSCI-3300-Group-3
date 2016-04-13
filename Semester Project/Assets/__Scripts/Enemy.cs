@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
+    private bool isDead = false;
+
     void Start()
     {
         //Debug.Log("speed: " + this.speed);
@@ -121,14 +123,18 @@ public class Enemy : MonoBehaviour
         {
             ScoreManager.SM.addScore(score);
             Die();
+
+            if (isDead == false)
+            {
+                Main.S.ShipDestroyed(this);
+                isDead = true;
+            }
         }
     }
-
 
     public void Die()
     {
         deathPS.Play();
-        Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
     }
 
