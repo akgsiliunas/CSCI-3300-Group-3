@@ -15,7 +15,6 @@ public class Enemy_2 : Enemy {
     {
 
         base.Orient();
-        //base.FreezeContraints();
 
         weapons[0].SetType(WeaponType.blaster);
 

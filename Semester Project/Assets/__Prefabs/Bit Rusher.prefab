@@ -38,7 +38,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &127004
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -81,7 +81,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474296}
-  - {fileID: 481062}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &467094
@@ -107,6 +106,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 467094}
+  - {fileID: 481062}
   m_Father: {fileID: 440770}
   m_RootOrder: 0
 --- !u!4 &481062
@@ -119,7 +119,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 440770}
+  m_Father: {fileID: 474296}
   m_RootOrder: 1
 --- !u!33 &3362692
 MeshFilter:

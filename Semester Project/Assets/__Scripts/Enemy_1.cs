@@ -18,7 +18,6 @@ public class Enemy_1 : Enemy {
 	public override void Start () {
 
         base.Orient();
-        base.FreezeContraints();
 
         weapons[0].SetType(WeaponType.blaster);
 
