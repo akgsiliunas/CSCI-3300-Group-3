@@ -1,0 +1,31 @@
+Group 3 - Sprint #1 Backlog
+Updated 2/1/2016
+
+-- represent implemented requirements
+== represent removed requirements
+
+Requirements
+
+UI for difficulty setting
+Beautify start screen
+Apply global difficulty constant to scores
+Balance difficulty constant
+--Install bumpers
+--Change aspect ratio to 4:3
+Reduce player movement sensitivity
+Restart game after high score scene
+Fix "1st place" bug in high score scene
+Create demo video package
+Fix multiple powerup drop bug
+Redesign Powerup asthetics
+Add missles
+--Fix getting stuck on rotor bug
+Make spawn manager
+Create wave spawn mechanic
+Create boss spawn mechanic
+Create vertical core health bar
+Create vertical wave timer bar
+Create 4 shield health bars for players
+Wrap cabinet in duct tape
+Drill in holes and install joysticks
+Implement Xbox controller support.
