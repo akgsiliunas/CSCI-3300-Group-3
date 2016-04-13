@@ -19,7 +19,12 @@ public class Spawner : MonoBehaviour {
     {
        // enemySpawnRate = 1f / enemySpawnPerSecond;
         Invoke("SpawnEnemy", enemySpawnRate);
+
+//		Debug.Log ("Rate is : "+enemySpawnRate);
+
+
         Debug.Log(enemySpawnRate);
+
     }
 
     public void SpawnEnemy()
@@ -57,10 +62,13 @@ public class Spawner : MonoBehaviour {
                 go.GetComponent<Enemy>().movement = Enemy.Movement.Top;
             else
                 go.GetComponent<Enemy>().movement = Enemy.Movement.Bottom;
+			
         }
 
         go.transform.position = pos;
         Invoke("SpawnEnemy", enemySpawnRate);
+//		Invoke("SpawnEnemy", 20);
+//		Debug.Log ("Rate is : "+enemySpawnRate);
     }
 
 }

@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour
+
 {
     public float speed = 2.0f * UIManager.UM.DiffLevel;
     public float fireRate = 0.3f * UIManager.UM.DiffLevel;
     public float health = 10 * UIManager.UM.DiffLevel;
+
     public int score;
     public float collideDamage = 50f;
 

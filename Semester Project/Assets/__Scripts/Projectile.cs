@@ -5,8 +5,6 @@ public class Projectile : MonoBehaviour {
 	[SerializeField]
 	private WeaponType _type;
 
-    public Player player;
-
 	public WeaponType type{
 		get{
 			return _type;
@@ -30,7 +28,5 @@ public class Projectile : MonoBehaviour {
 		if (Utils.ScreenBoundsCheck (GetComponent<Collider> ().bounds, BoundsTest.offScreen) != Vector3.zero)
 			Destroy (this.gameObject);
 	}
-
-    
 
 }
