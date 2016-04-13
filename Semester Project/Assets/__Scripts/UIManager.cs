@@ -30,9 +30,7 @@ public class UIManager : MonoBehaviour
     public GameObject shield3;
     public GameObject shield4;
 
-<<<<<<< HEAD
 
-=======
     //public static readonly float Tutorial = 0.01f;
     //public static readonly float Easy = 1;
     //public static readonly float Normal = 20;
@@ -42,7 +40,7 @@ public class UIManager : MonoBehaviour
     public float DiffLevel;
 
     
->>>>>>> b64407cd65564eaa6b38f7596a0cc348e2e93595
+
 
     public bool TestMode,DebugMode;
 	//public static string PlayerName;
