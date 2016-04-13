@@ -3546,16 +3546,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 253832630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.3, z: 1}
   m_Children:
   - {fileID: 920657127}
   m_Father: {fileID: 2135780967}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215, y: -25}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 135, y: 0}
   m_SizeDelta: {x: 175, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253832632
@@ -3773,6 +3773,14 @@ Prefab:
     - target: {fileID: 130388, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
       propertyPath: m_Name
       value: Regenerator (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
@@ -4181,6 +4189,22 @@ Prefab:
     - target: {fileID: 6575232, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
       propertyPath: m_Size.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468348, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468348, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
@@ -7334,6 +7358,10 @@ Prefab:
     - target: {fileID: 130388, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
       propertyPath: m_Name
       value: Regenerator (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
@@ -11617,6 +11645,10 @@ Prefab:
       propertyPath: m_Name
       value: Regenerator (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6412394, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f2dac3d9b9d3a54eb0480a5f07315aa, type: 2}
   m_IsPrefabParent: 0
@@ -13289,16 +13321,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110674371}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.3, z: 1}
   m_Children:
   - {fileID: 716510612}
   m_Father: {fileID: 2135780967}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215, y: -55}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -135, y: 0}
   m_SizeDelta: {x: 175, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110674373
@@ -13313,7 +13345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.18382353, g: 0.18382353, b: 0.18382353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
