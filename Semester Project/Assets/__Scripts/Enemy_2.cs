@@ -11,10 +11,11 @@ public class Enemy_2 : Enemy {
 	// Determines how much the Sine wave will affect movement
 	public float		sinEccentricity = 0.6f;
 
-    void Start()
+    public override void Start()
     {
 
         base.Orient();
+        //base.FreezeContraints();
 
         weapons[0].SetType(WeaponType.blaster);
 

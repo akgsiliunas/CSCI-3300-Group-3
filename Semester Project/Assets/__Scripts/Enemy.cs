@@ -25,11 +25,13 @@ public class Enemy : MonoBehaviour
 
     private bool isDead = false;
 
-    void Start()
+    public virtual void Start()
     {
         //Debug.Log("speed: " + this.speed);
         deathPS.Pause();
         Orient();
+        FreezeContraints();
+        //FreezeContraints();
         //Debug.Log("health: " + health);
         //Debug.Log("Rate: " + fireRate);
     }
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(movement);
         Move();
     }
 
@@ -75,6 +78,21 @@ public class Enemy : MonoBehaviour
         {
             this.transform.position = value;
         }
+    }
+
+    public virtual void FreezeContraints()
+    {
+        Debug.Log(movement);
+
+
+        if (movement == Movement.Left || movement == Movement.Right)
+        {
+            transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+            Debug.Log("AJWEFJAWPEJFAW:DFAWE");
+        }
+           
+        else
+            transform.GetChild(0).GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
     }
 
     public virtual void Orient()

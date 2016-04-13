@@ -13,6 +13,7 @@ public class Enemy_3 : Enemy
 
     private float birthTime;
 
+    /*
     void Start()
     {
         base.Orient();
@@ -22,6 +23,7 @@ public class Enemy_3 : Enemy
 
         birthTime = Time.time;
     }
+    */
 
 
     public override void Move()

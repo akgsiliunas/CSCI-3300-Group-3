@@ -15,14 +15,16 @@ public class Enemy_1 : Enemy {
     private float birthTime;
 
 
-	void Start () {
+	public override void Start () {
 
         base.Orient();
+        base.FreezeContraints();
 
         weapons[0].SetType(WeaponType.blaster);
 
         x0 = pos.x;
         z0 = pos.z; 
+
 
         birthTime = Time.time;
 
