@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour
     }
 
     [System.Serializable]
-    public class EnemyDefinition
+    public class EnemySpawnDefinition
     {
         public EnemyType type = EnemyType.bitRusher;
         public GameObject enemyPrefab;
-        public float spawnprobability;
+        public float spawnProbability;
     }
 
     public float speed = 2.0f * UIManager.UM.DiffLevel;
