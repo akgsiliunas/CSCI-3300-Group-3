@@ -14,7 +14,7 @@ public static class WeightedRandomizer
 
     public class WeightedRandomizer<T> 
     {
-        private static UnityEngine.Random _random = new UnityEngine.Random();
+        private static System.Random _random = new System.Random();
         private Dictionary<T, int> _weights;
 
         /// <summary>
