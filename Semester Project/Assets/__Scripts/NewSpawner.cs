@@ -39,8 +39,8 @@ public class NewSpawner : MonoBehaviour {
     private float timer = 10f;
     private float timeChange = 0f;
 
-    private float waveCountDown = 10f;
-    private float waveLifeSpan = 5f;
+    private float waveCountDown = 30f;
+    private float waveLifeSpan = 10f;
 
 
     void Awake () {
@@ -142,6 +142,8 @@ public class NewSpawner : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log(timeChange);
+
         Pacing();
 
         if (normalSpawning == true)
