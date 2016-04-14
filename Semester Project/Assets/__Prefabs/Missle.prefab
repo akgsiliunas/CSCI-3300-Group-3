@@ -32,7 +32,7 @@ GameObject:
   - 199: {fileID: 19904548}
   m_Layer: 8
   m_Name: Trail Particle System
-  m_TagString: Untagged
+  m_TagString: BulletTrail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -49,7 +49,7 @@ GameObject:
   - 199: {fileID: 19948992}
   m_Layer: 8
   m_Name: Bomblast Particle System
-  m_TagString: Untagged
+  m_TagString: BulletTrail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
