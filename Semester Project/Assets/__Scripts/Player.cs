@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
         if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
+           // other.GetComponent<Enemy>().deathPS.Play();
             Destroy(other.transform.root.gameObject);
         }
         else if (other.transform.root.tag == "PowerUp")

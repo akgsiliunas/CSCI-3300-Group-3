@@ -6879,6 +6879,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - enemyPrefab: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
+    spawnProbability: 0
+  - enemyPrefab: {fileID: 133284, guid: a236a4e5b16499941bbc32208eccf5d5, type: 2}
+    spawnProbability: 0
+  - enemyPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
     spawnProbability: 100
   spawnerList:
   - spawnerPrefab: {fileID: 708431730}
@@ -6896,8 +6900,6 @@ MonoBehaviour:
     spawnProbability: 40
   - bossPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
     spawnProbability: 40
-  wormCount: 4
-  rookCount: 8
 --- !u!1001 &961413134
 Prefab:
   m_ObjectHideFlags: 0
@@ -10052,7 +10054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448550, guid: 15e44742d672edf4eb01eda730e15f13, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15e44742d672edf4eb01eda730e15f13, type: 2}

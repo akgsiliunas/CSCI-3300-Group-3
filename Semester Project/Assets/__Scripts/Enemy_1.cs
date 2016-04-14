@@ -24,7 +24,6 @@ public class Enemy_1 : Enemy {
         x0 = pos.x;
         z0 = pos.z; 
 
-
         birthTime = Time.time;
 
         InvokeRepeating("Fire", fireRate, fireRate);

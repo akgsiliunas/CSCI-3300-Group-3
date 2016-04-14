@@ -203,6 +203,15 @@ public class SpawnManager : MonoBehaviour {
 
             pos.x = (spawner.GetComponent<Renderer>().bounds.center.x);
 
+            Debug.Log(enemy.name);
+
+            // This let's the Rook know which direction to move on the platform
+            if (enemy.name == "Rook(Clone)")
+            {
+                if (pos.z < 0)
+                    enemy.GetComponent<Enemy_2>().negativeZ = true;
+            }
+
             if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Left)
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Left;
             else
@@ -216,6 +225,12 @@ public class SpawnManager : MonoBehaviour {
             pos.x = Random.Range(xMax, xMin);
 
             pos.z = (spawner.GetComponent<Renderer>().bounds.center.z);
+
+            if (enemy.name == "Rook(Clone)")
+            {
+                if (pos.x < 0)
+                    enemy.GetComponent<Enemy_2>().negativeX = true;
+            }
 
             if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Top)
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Top;
