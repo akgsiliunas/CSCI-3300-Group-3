@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         ClearWeapons();
-        weapons[0].SetType(WeaponType.missile);
+        weapons[0].SetType(WeaponType.laser);
     }
 
     public virtual void Update()
