@@ -20,7 +20,7 @@ public class Enemy_2 : Enemy {
     {
         base.Orient();
 
-        weapons[0].SetType(WeaponType.blaster);
+        weapons[0].SetType(WeaponType.missile);
 
         x0 = pos.x;
         z0 = pos.z;
