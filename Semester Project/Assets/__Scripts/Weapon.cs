@@ -7,7 +7,7 @@ public enum WeaponType{
 	spread,
 	phaser,
 	missile,
-	laser,
+	bomblast,
 	shield
 }
 
@@ -134,7 +134,7 @@ public class Weapon : MonoBehaviour {
                 p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
                 break;
 
-            case WeaponType.laser:
+            case WeaponType.bomblast:
                 p = MakeProjectile();
                 p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
                 break;

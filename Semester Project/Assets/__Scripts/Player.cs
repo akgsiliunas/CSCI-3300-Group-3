@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         ClearWeapons();
-        weapons[0].SetType(WeaponType.laser);
+        weapons[0].SetType(WeaponType.blaster);
     }
 
     public virtual void Update()
@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
         {
            // Debug.Log("jasdfowaefjws");
             shieldLevel--;
-            Destroy(other.transform.root.gameObject);
+            //Destroy(other.transform.root.gameObject);
+            other.GetComponent<Projectile>().Die();
         }
         if (other.transform.root.tag == "Enemy")
         {

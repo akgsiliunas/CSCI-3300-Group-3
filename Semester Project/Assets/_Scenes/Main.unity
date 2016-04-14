@@ -1729,6 +1729,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 849776832}
   m_RootOrder: 0
+--- !u!1 &158138302 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161574, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+  m_PrefabInternal: {fileID: 769076663}
 --- !u!1 &170034111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,7 +3296,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170034111}
-  m_LocalRotation: {x: -0.290174, y: -0.64482486, z: -0.6448249, w: 0.29017398}
+  m_LocalRotation: {x: -0.29017398, y: -0.6448248, z: -0.64482486, w: 0.29017395}
   m_LocalPosition: {x: -0.72, y: -15.88, z: 2.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4755,40 +4759,40 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8.194694
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalPosition.y
       value: 3.33
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalPosition.z
       value: -22.241512
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 403564, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+    - target: {fileID: 408922, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &815627431 stripped
 GameObject:
@@ -4814,40 +4818,40 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalPosition.x
       value: 5.02
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalPosition.y
       value: 2.630212
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalPosition.z
       value: -21.27
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 433388, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    - target: {fileID: 496864, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &834723957
 GameObject:
@@ -10062,21 +10066,21 @@ MonoBehaviour:
   - type: 3
     letter: P
     color: {r: 0, g: 0.2965517, b: 1, a: 1}
-    projectilePrefab: {fileID: 156020, guid: a26f44b7a03ea1e4d85a0a2da6f69722, type: 2}
+    projectilePrefab: {fileID: 158138302}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 0.05
+    continuousDamage: 0
+    delayBetweenShots: 0
+    velocity: 15
+  - type: 5
+    letter: BB
+    color: {r: 1, g: 0.93103456, b: 0, a: 1}
+    projectilePrefab: {fileID: 163146, guid: 6821e10470de6eb42916979b7a7c4d04, type: 2}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 40
     continuousDamage: 0
     delayBetweenShots: 5
-    velocity: 15
-  - type: 5
-    letter: P
-    color: {r: 1, g: 0.93103456, b: 0, a: 1}
-    projectilePrefab: {fileID: 197568, guid: ac205374455d72240a9ff5ca03cc5708, type: 2}
-    projectileColor: {r: 1, g: 1, b: 1, a: 1}
-    damageOnHit: 0.015
-    continuousDamage: 0
-    delayBetweenShots: 0
-    velocity: 15
+    velocity: 25
   prefabPowerUp: {fileID: 111074, guid: dc0851a235c128047a80456f70311fef, type: 2}
   powerUpFrequency: 01000000010000000200000006000000
   ____________: 0
