@@ -6795,6 +6795,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 930114878}
   - 114: {fileID: 930114879}
+  - 114: {fileID: 930114880}
   m_Layer: 0
   m_Name: Platforms
   m_TagString: Untagged
@@ -6848,6 +6849,53 @@ MonoBehaviour:
     spawnProbability: 20
   - bossPrefab: {fileID: 159292, guid: b625376132b378645b65ecfa16e22c4d, type: 2}
     spawnProbability: 20
+  normalSpawning: 1
+  waveSpawning: 0
+  bossSpawning: 0
+  timeChange: 0
+  normalTimeChange: 0
+  waveTimeChange: 0
+  normalSpawnRate: 4
+  waveSpawnRate: 2
+  waveCountDown: 5
+  waveLifeSpan: 2.5
+  bossLifeSpan: 5
+  spawnerSelection: 0
+  firstSelectedSpawner: {fileID: 0}
+  secondSelectedSpawner: {fileID: 0}
+  bossSpawned: 0
+  wormCount: 4
+  rookCount: 8
+--- !u!114 &930114880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930114877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a6de429b4b54a42815bf88fbfb81a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList:
+  - enemyPrefab: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
+    spawnProbability: 100
+  spawnerList:
+  - spawnerPrefab: {fileID: 708431730}
+    spawnProbability: 25
+  - spawnerPrefab: {fileID: 327281237}
+    spawnProbability: 25
+  - spawnerPrefab: {fileID: 1608663699}
+    spawnProbability: 25
+  - spawnerPrefab: {fileID: 815627431}
+    spawnProbability: 25
+  bossList:
+  - bossPrefab: {fileID: 112424, guid: c9e94d29946a18e4facc004c332b3eac, type: 2}
+    spawnProbability: 60
+  - bossPrefab: {fileID: 159292, guid: b625376132b378645b65ecfa16e22c4d, type: 2}
+    spawnProbability: 40
+  - bossPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
+    spawnProbability: 40
   wormCount: 4
   rookCount: 8
 --- !u!1001 &961413134

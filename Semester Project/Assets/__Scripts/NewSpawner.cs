@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+
+/*
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -225,3 +227,4 @@ public class NewSpawner : MonoBehaviour {
         enemy.transform.position = pos;
     }
 }
+*/
