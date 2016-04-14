@@ -9,6 +9,13 @@ public class SpawnerDefinition
     public int spawnProbability;
 }
 
+[System.Serializable]
+public class BossDefinition
+{
+    public GameObject bossPrefab;
+    public int spawnProbability;
+}
+
 public class NewSpawner : MonoBehaviour {
 
     static public Dictionary<GameObject, int> enemyDict;
@@ -17,52 +24,116 @@ public class NewSpawner : MonoBehaviour {
     static public Dictionary<GameObject, int> spawnerDict;
     public SpawnerDefinition[] spawnerList;
 
-    //public enum Orientation { Left, Right, Top, Bottom }
-    //public Orientation orientation;
+    static public Dictionary<GameObject, int> bossDict;
+    public BossDefinition[] bossList;
 
-    private float normalSpawnRate = 4f;
-    private float normalTimeChange = 0f;
-
+    // Stage variables
     private bool normalSpawning = true;
+    private bool waveSpawning = false;
+    private bool bossSpawning = false;
 
-    private float waveSpawnRate = 2f;
+    // Time Change Variables
+    private float timeChange = 0f;
+    private float normalTimeChange = 0f;
     private float waveTimeChange = 0f;
 
-    private bool waveSpawning = false;
+    // Spawn Rates
+    private float normalSpawnRate = 4f;
+    private float waveSpawnRate = 2f;
+   
+    // Stage Lifespans
+    private float waveCountDown = 5f;
+    private float waveLifeSpan = 2.5f;
+    private float bossLifeSpan = 5f;
 
+    // Randomized Spawner Variables
     private bool spawnerSelection = false;
-
     private GameObject firstSelectedSpawner;
     private GameObject secondSelectedSpawner;
 
-
-    private float timer = 10f;
-    private float timeChange = 0f;
-
-    private float waveCountDown = 30f;
-    private float waveLifeSpan = 10f;
+    // Boss Spawning Variables
+    private bool bossSpawned = false;
+    public int wormCount = 4;
+    public int rookCount = 8;
 
 
-    void Awake () {
+    void Awake() {
 
         enemyDict = new Dictionary<GameObject, int>();
         spawnerDict = new Dictionary<GameObject, int>();
+        bossDict = new Dictionary<GameObject, int>();
+
+        foreach (EnemySpawnDefinition enemy in enemyList)
+            enemyDict.Add(enemy.enemyPrefab, enemy.spawnProbability);
 
         foreach (SpawnerDefinition spawner in spawnerList)
             spawnerDict.Add(spawner.spawnerPrefab, spawner.spawnProbability);
 
-        foreach (EnemySpawnDefinition enemy in enemyList)
-            enemyDict.Add(enemy.enemyPrefab, enemy.spawnProbability);
+        foreach (BossDefinition boss in bossList)
+            bossDict.Add(boss.bossPrefab, boss.spawnProbability);
+    }
+
+    void Update()
+    {
+        // Stage Switch Timer
+        Pacing();
+
+        if (normalSpawning == true)
+            Normal();
+        else if (waveSpawning == true)
+            Wave();
+        else if (bossSpawning == true)
+            Boss();
     }
 
 
+    public void Pacing()
+    {
+        if (normalSpawning == true && waveSpawning == false && bossSpawning == false)
+        {
+            if (timeChange > waveCountDown)
+            {
+                timeChange = 0f;
+                normalSpawning = false;
+                waveSpawning = true;
+                bossSpawning = false;
+            }
+            else
+                timeChange += Time.deltaTime;
+        }
+        else if (normalSpawning == false && waveSpawning == true && bossSpawning == false)
+        {
+            if (timeChange > waveLifeSpan)
+            {
+                timeChange = 0f;
+                normalSpawning = false;
+                waveSpawning = false;
+                bossSpawning = true;
+            }
+            else
+                timeChange += Time.deltaTime;
+        }
+        else if (normalSpawning == false && waveSpawning == false && bossSpawning == true)
+        {
+            if (timeChange > bossLifeSpan)
+            {
+                timeChange = 0f;
+                normalSpawning = true;
+                waveSpawning = false;
+                bossSpawning = false;
+                bossSpawned = false;
+            }
+            else
+                timeChange += Time.deltaTime;
+        }
+    }
 
     public void Normal()
     {
         if (normalTimeChange > normalSpawnRate)
         {
             normalTimeChange = 0f;
-            NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), WeightedRandomizer.From(spawnerDict).TakeOne());
+            Spawn(WeightedRandomizer.From(enemyDict).TakeOne(), WeightedRandomizer.From(spawnerDict).TakeOne());
         }
         else
             normalTimeChange += Time.deltaTime;
@@ -70,7 +141,6 @@ public class NewSpawner : MonoBehaviour {
 
     public void Wave()
     {
-
         if (spawnerSelection == false)
         {
             firstSelectedSpawner = WeightedRandomizer.From(spawnerDict).TakeOne();
@@ -82,83 +152,43 @@ public class NewSpawner : MonoBehaviour {
         {
             waveTimeChange = 0f;
 
-            if (Random.Range(0f, 1f)  < 0.5f)
-                NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), firstSelectedSpawner);
+            if (Random.Range(0f, 1f) < 0.5f)
+                Spawn(WeightedRandomizer.From(enemyDict).TakeOne(), firstSelectedSpawner);
             else
-                NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), secondSelectedSpawner);
+                Spawn(WeightedRandomizer.From(enemyDict).TakeOne(), secondSelectedSpawner);
         }
         else
             waveTimeChange += Time.deltaTime;
     }
 
-    public void Pacing()
+    public void Boss()
     {
-        if (normalSpawning == true && waveSpawning == false)
+        if (bossSpawned == false)
         {
-            //Debug.Log(waveCountDown);
-            if (timeChange > waveCountDown)
-            {
-                timeChange = 0f;
-                normalSpawning = false;
-                waveSpawning = true;
-            }
-            else
-                timeChange += Time.deltaTime;
-        }
-        else if (normalSpawning == false && waveSpawning == true)
-        {
+            GameObject boss = WeightedRandomizer.From(bossDict).TakeOne();
+            Debug.Log(boss.name);
 
-            if (timeChange > waveLifeSpan)
+            if (boss.name == "Virus Boss")
             {
-                timeChange = 0f;
-                normalSpawning = true;
-                waveSpawning = false;
+                firstSelectedSpawner = WeightedRandomizer.From(spawnerDict).TakeOne();
+                Spawn(boss, firstSelectedSpawner);
             }
-            else
-                timeChange += Time.deltaTime;
+            else if (boss.name == "Worm")
+            {
+                for (int i = 0; i < wormCount; i++)
+                    Spawn(boss, WeightedRandomizer.From(spawnerDict).TakeOne());
+            }
+            else if (boss.name == "Rook")
+            {
+                for (int i = 0; i < rookCount; i++)
+                    Spawn(boss, WeightedRandomizer.From(spawnerDict).TakeOne());
+            }
+            bossSpawned = true;
         }
-
-        /*
-        if (timeChange > timer)
-        {
-            timeChange = 0f;
-
-            if (normalSpawning == true && waveSpawning == false)
-            {
-                normalSpawning = false;
-                waveSpawning = true;
-            }
-            else if (normalSpawning == false && waveSpawning == true)
-            {
-                normalSpawning = true;
-                waveSpawning = false;
-            }
-        }
-        else
-            timeChange += Time.deltaTime;
-    */
     }
 
-
-    void Update()
+    public void Spawn(GameObject enemyPrefab, GameObject spawner)
     {
-        Debug.Log(timeChange);
-
-        Pacing();
-
-        if (normalSpawning == true)
-        {
-           Debug.Log(normalSpawning);
-            Normal();
-        }
-        else if (waveSpawning == true)
-            Wave();
-    }
-
-
-    public void NormalSpawn(GameObject enemyPrefab, GameObject spawner)
-    {
-
         GameObject enemy = Instantiate(enemyPrefab);
 
         Vector3 pos = Vector3.zero;
@@ -194,7 +224,4 @@ public class NewSpawner : MonoBehaviour {
 
         enemy.transform.position = pos;
     }
-
-
-
 }

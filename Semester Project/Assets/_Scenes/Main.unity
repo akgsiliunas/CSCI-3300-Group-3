@@ -3292,7 +3292,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170034111}
-  m_LocalRotation: {x: -0.29017398, y: -0.6448248, z: -0.64482486, w: 0.29017395}
+  m_LocalRotation: {x: -0.290174, y: -0.64482486, z: -0.6448249, w: 0.29017398}
   m_LocalPosition: {x: -0.72, y: -15.88, z: 2.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6841,8 +6841,15 @@ MonoBehaviour:
     spawnProbability: 25
   - spawnerPrefab: {fileID: 815627431}
     spawnProbability: 25
-  normalSpawnRate: 2
-  timeChange: 0
+  bossList:
+  - bossPrefab: {fileID: 112424, guid: c9e94d29946a18e4facc004c332b3eac, type: 2}
+    spawnProbability: 60
+  - bossPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
+    spawnProbability: 20
+  - bossPrefab: {fileID: 159292, guid: b625376132b378645b65ecfa16e22c4d, type: 2}
+    spawnProbability: 20
+  wormCount: 4
+  rookCount: 8
 --- !u!1001 &961413134
 Prefab:
   m_ObjectHideFlags: 0
