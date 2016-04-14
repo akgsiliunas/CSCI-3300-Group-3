@@ -20,20 +20,25 @@ public class NewSpawner : MonoBehaviour {
     //public enum Orientation { Left, Right, Top, Bottom }
     //public Orientation orientation;
 
-    public float normalSpawnRate = 10f;
-    public float normalTimeChange = 0f;
+    private float normalSpawnRate = 4f;
+    private float normalTimeChange = 0f;
 
-    private bool normalSpawning = false;
+    private bool normalSpawning = true;
 
     private float waveSpawnRate = 2f;
-    public float waveTimeChange = 0f;
+    private float waveTimeChange = 0f;
 
-    private bool waveSpawning = true;
+    private bool waveSpawning = false;
 
-    public bool spawnerSelection = false;
+    private bool spawnerSelection = false;
 
-    public GameObject firstSelectedSpawner;
-    public GameObject secondSelectedSpawner;
+    private GameObject firstSelectedSpawner;
+    private GameObject secondSelectedSpawner;
+
+
+    private float timer = 10f;
+    private float timeChange = 0f;
+
 
     void Awake () {
 
@@ -83,12 +88,38 @@ public class NewSpawner : MonoBehaviour {
             waveTimeChange += Time.deltaTime;
     }
 
+    public void Pacing()
+    {
+        if (timeChange > timer)
+        {
+            timeChange = 0f;
+
+            if (normalSpawning == true && waveSpawning == false)
+            {
+                normalSpawning = false;
+                waveSpawning = true;
+            }
+            else if (normalSpawning == false && waveSpawning == true)
+            {
+                normalSpawning = true;
+                waveSpawning = false;
+            }
+        }
+        else
+            timeChange += Time.deltaTime;
+    }
+
 
     void Update()
     {
-        if (normalSpawning == true)
-            Normal();
+        // Debug.Log(timeChange);
+        Pacing();
 
+        if (normalSpawning == true)
+        {
+           Debug.Log(normalSpawning);
+            Normal();
+        }
         else if (waveSpawning == true)
             Wave();
     }

@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(movement);
+       // Debug.Log(movement);
         Move();
     }
 
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
-        Debug.Log("speed2: " + this.speed);
+       // Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
