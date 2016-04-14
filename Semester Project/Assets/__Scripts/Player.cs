@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
         {
            // Debug.Log("jasdfowaefjws");
             shieldLevel--;
-            Destroy(other.transform.root.gameObject);
+            //Destroy(other.transform.root.gameObject);
+            other.GetComponent<Projectile>().Die();
         }
         if (other.transform.root.tag == "Enemy")
         {
