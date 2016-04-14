@@ -1,8 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class EnemySpawnDefinition
+{
+    public GameObject enemyPrefab;
+    public int spawnProbability;
+}
+
 public class Enemy : MonoBehaviour
 {
+
+
     public float speed = 2.0f * UIManager.UM.DiffLevel;
     public float fireRate = 0.3f * UIManager.UM.DiffLevel;
     public float health = 10 * UIManager.UM.DiffLevel;
@@ -43,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(movement);
+       // Debug.Log(movement);
         Move();
     }
 
@@ -63,7 +72,7 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
-        Debug.Log("speed2: " + this.speed);
+       // Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
