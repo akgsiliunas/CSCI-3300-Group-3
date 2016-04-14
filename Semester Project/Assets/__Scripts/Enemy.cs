@@ -23,11 +23,14 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
-    void Start()
+    private bool isDead = false;
+
+    public virtual void Start()
     {
         //Debug.Log("speed: " + this.speed);
         deathPS.Pause();
         Orient();
+        //FreezeContraints();
         //Debug.Log("health: " + health);
         //Debug.Log("Rate: " + fireRate);
     }
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(movement);
         Move();
     }
 
@@ -121,14 +125,18 @@ public class Enemy : MonoBehaviour
         {
             ScoreManager.SM.addScore(score);
             Die();
+
+            if (isDead == false)
+            {
+                Main.S.ShipDestroyed(this);
+                isDead = true;
+            }
         }
     }
-
 
     public void Die()
     {
         deathPS.Play();
-        Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
     }
 
