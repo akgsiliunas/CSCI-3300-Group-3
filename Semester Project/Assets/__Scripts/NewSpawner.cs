@@ -2,38 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class SpawnerDefinition
+{
+    public GameObject spawnerPrefab;
+    public int spawnProbability;
+}
+
 public class NewSpawner : MonoBehaviour {
 
-    static public Dictionary<GameObject, int> weights;
+    static public Dictionary<GameObject, int> enemyDict;
+    public EnemySpawnDefinition[] enemyList;
 
-    static public Dictionary<GameObject, int> spawners;
-    public GameObject[] spawnerList;
+    static public Dictionary<GameObject, int> spawnerDict;
+    public SpawnerDefinition[] spawnerList;
 
-   // static public Dictionary<EnemyType, EnemySpawnDefinition> E_DEFS;
-    public EnemySpawnDefinition[] enemyDefinitions;
-
-    public enum Orientation { Left, Right, Top, Bottom }
-    public Orientation orientation;
-
+    //public enum Orientation { Left, Right, Top, Bottom }
+    //public Orientation orientation;
 
     public float normalSpawnRate = 10f;
     public float timeChange = 0f;
 
     void Awake () {
 
-        weights = new Dictionary<GameObject, int>();
-        spawners = new Dictionary<GameObject, int>();
-     //   E_DEFS = new Dictionary<EnemyType, EnemySpawnDefinition>();
+        enemyDict = new Dictionary<GameObject, int>();
+        spawnerDict = new Dictionary<GameObject, int>();
 
-        foreach (GameObject spawner in spawnerList)
-            spawners.Add(spawner, 25);
+        foreach (SpawnerDefinition spawner in spawnerList)
+            spawnerDict.Add(spawner.spawnerPrefab, spawner.spawnProbability);
 
-        foreach (EnemySpawnDefinition def in enemyDefinitions)
-        {
-     //       E_DEFS[def.type] = def;
-            weights.Add(def.enemyPrefab, def.spawnProbability);
-        }
-
+        foreach (EnemySpawnDefinition enemy in enemyList)
+            enemyDict.Add(enemy.enemyPrefab, enemy.spawnProbability);
     }
 
 
@@ -42,7 +41,7 @@ public class NewSpawner : MonoBehaviour {
         if (timeChange > normalSpawnRate)
         {
             timeChange = 0f;
-            NormalSpawn(WeightedRandomizer.From(weights).TakeOne(), WeightedRandomizer.From(spawners).TakeOne());
+            NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), WeightedRandomizer.From(spawnerDict).TakeOne());
         }
         else
             timeChange += Time.deltaTime;
@@ -52,18 +51,12 @@ public class NewSpawner : MonoBehaviour {
 
     public void NormalSpawn(GameObject enemyPrefab, GameObject spawner)
     {
-        //  int ndx = Random.Range(0, prefabEnemies.Length);
-        //  GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
-        // Vector3 pos = Vector3.zero;
 
-        // if (enemy == null)
-        //    Debug.LogWarning("kkk");
-        // Debug.LogWarning(enemyPrefab.name);
         GameObject enemy = Instantiate(enemyPrefab);
 
         Vector3 pos = Vector3.zero;
 
-        if (orientation == Orientation.Left || orientation == Orientation.Right)
+        if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Left || spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Right)
         {
             float zMax = spawner.GetComponent<Renderer>().bounds.extents.z;
             float zMin = -spawner.GetComponent<Renderer>().bounds.extents.z;
@@ -72,7 +65,7 @@ public class NewSpawner : MonoBehaviour {
 
             pos.x = (spawner.GetComponent<Renderer>().bounds.center.x);
 
-            if (orientation == Orientation.Left)
+            if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Left)
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Left;
             else
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Right;
@@ -86,7 +79,7 @@ public class NewSpawner : MonoBehaviour {
 
             pos.z = (spawner.GetComponent<Renderer>().bounds.center.z);
 
-            if (orientation == Orientation.Top)
+            if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Top)
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Top;
             else
                 enemy.GetComponent<Enemy>().movement = Enemy.Movement.Bottom;
