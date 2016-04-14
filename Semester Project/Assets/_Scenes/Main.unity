@@ -6799,15 +6799,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c3720d992bf9a42b4538040a3720e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerList:
+  - {fileID: 708431730}
   enemyDefinitions:
   - type: 0
     enemyPrefab: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    spawnProbability: 95
-  spawners:
-  - {fileID: 708431730}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+    spawnProbability: 100
+  orientation: 0
+  normalSpawnRate: 2
+  timeChange: 0
 --- !u!1001 &961413134
 Prefab:
   m_ObjectHideFlags: 0
@@ -7051,7 +7051,8 @@ Prefab:
       propertyPath: prefabEnemies.Array.data[9]
       value: 
       objectReference: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11452076, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1015059845 stripped
@@ -7191,7 +7192,8 @@ Prefab:
       propertyPath: prefabEnemies.Array.data[9]
       value: 
       objectReference: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11452076, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1181670665
@@ -9156,7 +9158,8 @@ Prefab:
       propertyPath: prefabEnemies.Array.data[9]
       value: 
       objectReference: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11452076, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1519692591
@@ -9693,7 +9696,8 @@ Prefab:
       propertyPath: prefabEnemies.Array.data[9]
       value: 
       objectReference: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11452076, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2908bac7826b980419de40e3285641ff, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1744941463

@@ -3,6 +3,7 @@ using System.Collections;
 
 public enum EnemyType
 {
+    none,
     bitRusher,
     standardVirus,
     rookVirus,
@@ -13,7 +14,7 @@ public enum EnemyType
 [System.Serializable]
 public class EnemySpawnDefinition
 {
-    public EnemyType type = EnemyType.bitRusher;
+    public EnemyType type = EnemyType.none;
     public GameObject enemyPrefab;
     public int spawnProbability;
 }

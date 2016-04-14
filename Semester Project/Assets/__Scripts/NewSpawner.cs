@@ -16,7 +16,7 @@ public class NewSpawner : MonoBehaviour {
     public Orientation orientation;
 
 
-    public float normalSpawnRate = 2f;
+    public float normalSpawnRate = 10f;
     public float timeChange = 0f;
 
     void Awake () {
@@ -57,13 +57,17 @@ public class NewSpawner : MonoBehaviour {
     }
 
 
-    public void NormalSpawn(GameObject spawner, GameObject enemy)
+    public void NormalSpawn(GameObject enemyPrefab, GameObject spawner)
     {
-      //  int ndx = Random.Range(0, prefabEnemies.Length);
-      //  GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
-       // Vector3 pos = Vector3.zero;
+        //  int ndx = Random.Range(0, prefabEnemies.Length);
+        //  GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
+        // Vector3 pos = Vector3.zero;
 
-        Instantiate(enemy as GameObject);
+        // if (enemy == null)
+        //    Debug.LogWarning("kkk");
+        // Debug.LogWarning(enemyPrefab.name);
+        GameObject enemy = Instantiate(enemyPrefab);
+
         Vector3 pos = Vector3.zero;
 
         if (orientation == Orientation.Left || orientation == Orientation.Right)
