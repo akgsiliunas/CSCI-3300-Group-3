@@ -6482,7 +6482,7 @@ Transform:
   - {fileID: 930114878}
   - {fileID: 477120567}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &858576990
 GameObject:
   m_ObjectHideFlags: 0
@@ -6831,11 +6831,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - enemyPrefab: {fileID: 167700, guid: 8f60b5fdba4e4394e8d4075b3b70b9dd, type: 2}
-    spawnProbability: 80
+    spawnProbability: 0
   - enemyPrefab: {fileID: 133284, guid: a236a4e5b16499941bbc32208eccf5d5, type: 2}
-    spawnProbability: 10
+    spawnProbability: 50
   - enemyPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
-    spawnProbability: 8
+    spawnProbability: 48
   - enemyPrefab: {fileID: 159292, guid: b625376132b378645b65ecfa16e22c4d, type: 2}
     spawnProbability: 2
   spawnerList:

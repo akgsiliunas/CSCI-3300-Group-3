@@ -110,8 +110,6 @@ public class Weapon : MonoBehaviour {
                 //p.GetComponent<Rigidbody>().velocity = Vector3.left * def.velocity;
                 break;
 
-    
-
             case WeaponType.spread:
                 p = MakeProjectile();
                 p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
@@ -125,6 +123,12 @@ public class Weapon : MonoBehaviour {
                 p.GetComponent<Rigidbody>().velocity = (right.position - collar.transform.position) * def.velocity;
                 //p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0, -0.9f) * def.velocity;
                 break;
+
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
+                break;
+
         }
 
     }
@@ -140,7 +144,33 @@ public class Weapon : MonoBehaviour {
 			go.layer = LayerMask.NameToLayer ("ProjectileEnemy");
 		}
 		go.transform.position = collar.transform.position;
-        go.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+        //go.transform.rotation = Quaternion.Euler(new Vector3(transform.root.rotation.x, transform.root.rotation.y, transform.root.rotation.z));
+
+
+        if (transform.root.tag == "Hero")
+            go.transform.localRotation = transform.root.rotation;
+
+        if (transform.root.tag == "Enemy")
+        {
+
+            Vector3 rotationVector = transform.root.eulerAngles;
+            rotationVector.y += 180;
+            go.transform.localRotation = Quaternion.Euler(rotationVector);
+
+
+
+          //  go.transform.localRotation = transform.root.rotation;
+
+
+
+            //go.transform.localRotation = Quaternion.Euler(transform.root.localRotation.x, transform.root.localRotation.y, transform.root.localRotation.z);
+
+        }
+
+
+
+        //go.transform.localRotation = Quaternion.EulerRotation(new Vector3(transform.root.rotation.z, transform.root.rotation.x, transform.root.rotation.y));
+
         go.transform.parent = PROJECTILE_ANCHOR;
 		Projectile p = go.GetComponent<Projectile> ();
 		p.type = type;
