@@ -42,9 +42,9 @@ public class SpawnManager : MonoBehaviour {
     private float waveSpawnRate = 2f;
 
     // Stage Lifespans
-    private float waveCountDown = 5f;
-    private float waveLifeSpan = 2.5f;
-    private float bossLifeSpan = 5f;
+    private float waveCountDown = 60f;
+    private float waveLifeSpan = 20f;
+    private float bossLifeSpan = 15f;
 
     // Randomized Spawner Variables
     private bool spawnerSelection = false;
