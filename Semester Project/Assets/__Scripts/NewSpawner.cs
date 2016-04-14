@@ -9,7 +9,7 @@ public class NewSpawner : MonoBehaviour {
     static public Dictionary<GameObject, int> spawners;
     public GameObject[] spawnerList;
 
-    static public Dictionary<EnemyType, EnemySpawnDefinition> E_DEFS;
+   // static public Dictionary<EnemyType, EnemySpawnDefinition> E_DEFS;
     public EnemySpawnDefinition[] enemyDefinitions;
 
     public enum Orientation { Left, Right, Top, Bottom }
@@ -23,24 +23,17 @@ public class NewSpawner : MonoBehaviour {
 
         weights = new Dictionary<GameObject, int>();
         spawners = new Dictionary<GameObject, int>();
-        E_DEFS = new Dictionary<EnemyType, EnemySpawnDefinition>();
+     //   E_DEFS = new Dictionary<EnemyType, EnemySpawnDefinition>();
 
         foreach (GameObject spawner in spawnerList)
             spawners.Add(spawner, 25);
 
         foreach (EnemySpawnDefinition def in enemyDefinitions)
         {
-            E_DEFS[def.type] = def;
+     //       E_DEFS[def.type] = def;
             weights.Add(def.enemyPrefab, def.spawnProbability);
         }
 
-    }
-
-    static public EnemySpawnDefinition GetEnemyDefinition(EnemyType wt)
-    {
-        if (E_DEFS.ContainsKey(wt))
-            return (E_DEFS[wt]);
-        return (new EnemySpawnDefinition());
     }
 
 
