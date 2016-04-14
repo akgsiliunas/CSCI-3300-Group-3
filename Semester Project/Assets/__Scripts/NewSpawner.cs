@@ -21,7 +21,19 @@ public class NewSpawner : MonoBehaviour {
     //public Orientation orientation;
 
     public float normalSpawnRate = 10f;
-    public float timeChange = 0f;
+    public float normalTimeChange = 0f;
+
+    private bool normalSpawning = false;
+
+    private float waveSpawnRate = 2f;
+    public float waveTimeChange = 0f;
+
+    private bool waveSpawning = true;
+
+    public bool spawnerSelection = false;
+
+    public GameObject firstSelectedSpawner;
+    public GameObject secondSelectedSpawner;
 
     void Awake () {
 
@@ -36,16 +48,49 @@ public class NewSpawner : MonoBehaviour {
     }
 
 
-    void Update()
+
+    public void Normal()
     {
-        if (timeChange > normalSpawnRate)
+        if (normalTimeChange > normalSpawnRate)
         {
-            timeChange = 0f;
+            normalTimeChange = 0f;
             NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), WeightedRandomizer.From(spawnerDict).TakeOne());
         }
         else
-            timeChange += Time.deltaTime;
+            normalTimeChange += Time.deltaTime;
+    }
 
+    public void Wave()
+    {
+
+        if (spawnerSelection == false)
+        {
+            firstSelectedSpawner = WeightedRandomizer.From(spawnerDict).TakeOne();
+            secondSelectedSpawner = WeightedRandomizer.From(spawnerDict).TakeOne();
+            spawnerSelection = true;
+        }
+
+        if (waveTimeChange > waveSpawnRate)
+        {
+            waveTimeChange = 0f;
+
+            if (Random.Range(0f, 1f)  < 0.5f)
+                NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), firstSelectedSpawner);
+            else
+                NormalSpawn(WeightedRandomizer.From(enemyDict).TakeOne(), secondSelectedSpawner);
+        }
+        else
+            waveTimeChange += Time.deltaTime;
+    }
+
+
+    void Update()
+    {
+        if (normalSpawning == true)
+            Normal();
+
+        else if (waveSpawning == true)
+            Wave();
     }
 
 
