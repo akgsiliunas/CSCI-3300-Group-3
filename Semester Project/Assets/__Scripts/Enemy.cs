@@ -143,6 +143,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void CollisionDie()
+    {
+        deathPS.Play();
+        Destroy(this.gameObject);
+    }
+
     public void Die()
     {
         deathPS.Play();
