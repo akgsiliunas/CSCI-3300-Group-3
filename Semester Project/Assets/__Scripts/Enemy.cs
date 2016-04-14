@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum EnemyType
+{
+    bitRusher,
+    standardVirus,
+    rookVirus,
+    worm,
+    boss,
+}
+
+[System.Serializable]
+public class EnemySpawnDefinition
+{
+    public EnemyType type = EnemyType.bitRusher;
+    public GameObject enemyPrefab;
+    public float spawnProbability;
+}
+
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType
-    {
-        bitRusher,
-        standardVirus,
-        rookVirus,
-        worm,
-        boss,
-    }
 
-    [System.Serializable]
-    public class EnemySpawnDefinition
-    {
-        public EnemyType type = EnemyType.bitRusher;
-        public GameObject enemyPrefab;
-        public float spawnProbability;
-    }
 
     public float speed = 2.0f * UIManager.UM.DiffLevel;
     public float fireRate = 0.3f * UIManager.UM.DiffLevel;
