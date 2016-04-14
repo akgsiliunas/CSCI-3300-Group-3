@@ -15,7 +15,7 @@ public class EnemySpawnDefinition
 {
     public EnemyType type = EnemyType.bitRusher;
     public GameObject enemyPrefab;
-    public float spawnProbability;
+    public int spawnProbability;
 }
 
 public class Enemy : MonoBehaviour
