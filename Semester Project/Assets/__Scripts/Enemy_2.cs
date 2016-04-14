@@ -5,6 +5,9 @@ using System.Collections;
 
 public class Enemy_2 : Enemy {
 
+    public bool negativeZ = false;
+    public bool negativeX = false;
+
     public float waveFrequency = 2;
     public float waveWidth = 4;
 
@@ -32,13 +35,24 @@ public class Enemy_2 : Enemy {
         Vector3 tempPos = pos;
         float age = Time.time - birthTime;
         float theta = Mathf.PI * 2 * age / waveFrequency;
-        float sin = Mathf.Atan(theta);
+        float atan = Mathf.Atan(theta);
 
         if (movement == Movement.Left || movement == Movement.Right)
-            tempPos.z = z0 + waveWidth * sin;
+        {
+            Debug.Log(negativeZ);
 
+            if (negativeZ == true)
+                tempPos.z = z0 + waveWidth * atan;
+            else
+                tempPos.z = z0 - waveWidth * atan;
+        }
         else
-            tempPos.x = x0 + waveWidth * sin;
+        {
+            if (negativeX == true)
+                tempPos.x = x0 + waveWidth * atan;
+            else
+                tempPos.x = x0 - waveWidth * atan;
+        }
 
         pos = tempPos;
 

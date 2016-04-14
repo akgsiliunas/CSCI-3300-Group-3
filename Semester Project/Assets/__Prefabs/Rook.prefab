@@ -458,7 +458,9 @@ MonoBehaviour:
   weapons:
   - {fileID: 11423458}
   deathPS: {fileID: 19811202}
-  waveFrequency: 10
+  negativeZ: 0
+  negativeX: 0
+  waveFrequency: 2
   waveWidth: 8
 --- !u!198 &19811202
 ParticleSystem:
