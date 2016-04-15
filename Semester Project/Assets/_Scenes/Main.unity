@@ -6850,10 +6850,13 @@ MonoBehaviour:
   bossList:
   - bossPrefab: {fileID: 112424, guid: c9e94d29946a18e4facc004c332b3eac, type: 2}
     spawnProbability: 60
+    spawnCount: 1
   - bossPrefab: {fileID: 159292, guid: b625376132b378645b65ecfa16e22c4d, type: 2}
     spawnProbability: 40
+    spawnCount: 4
   - bossPrefab: {fileID: 183324, guid: 6639a1911883b5746bd94cd82eab0631, type: 2}
     spawnProbability: 40
+    spawnCount: 8
 --- !u!1001 &961413134
 Prefab:
   m_ObjectHideFlags: 0
