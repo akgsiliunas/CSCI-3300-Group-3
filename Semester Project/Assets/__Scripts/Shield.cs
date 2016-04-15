@@ -24,7 +24,7 @@ public class Shield : MonoBehaviour {
 			Material mat = GetComponent<Renderer> ().material;
 			mat.mainTextureOffset = new Vector2 (0.2f * levelShown, 0);
 		}
-		float rZ = (rotationPerSecond * Time.time * 360) % 360f;
-		transform.rotation = Quaternion.Euler (0, 0, rZ);
+		//float rZ = (rotationPerSecond * Time.time * 360) % 360f;
+		//transform.rotation = Quaternion.Euler (0, 0, rZ);
 	}
 }
