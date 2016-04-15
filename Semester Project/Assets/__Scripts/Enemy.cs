@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class EnemySpawnDefinition
+{
+    public GameObject enemyPrefab;
+    public int spawnProbability;
+}
+
 public class Enemy : MonoBehaviour
 
 {
+
+
     public float speed = 2.0f * UIManager.UM.DiffLevel;
     public float fireRate = 0.3f * UIManager.UM.DiffLevel;
     public float health = 10 * UIManager.UM.DiffLevel;
@@ -25,11 +34,14 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
-    void Start()
+    private bool isDead = false;
+
+    public virtual void Start()
     {
         //Debug.Log("speed: " + this.speed);
         deathPS.Pause();
         Orient();
+        //FreezeContraints();
         //Debug.Log("health: " + health);
         //Debug.Log("Rate: " + fireRate);
     }
@@ -42,6 +54,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+       // Debug.Log(movement);
         Move();
     }
 
@@ -61,7 +74,7 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
-        Debug.Log("speed2: " + this.speed);
+       // Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
@@ -123,14 +136,24 @@ public class Enemy : MonoBehaviour
         {
             ScoreManager.SM.addScore(score);
             Die();
+
+            if (isDead == false)
+            {
+                Main.S.ShipDestroyed(this);
+                isDead = true;
+            }
         }
     }
 
+    public void CollisionDie()
+    {
+        deathPS.Play();
+        Destroy(this.gameObject);
+    }
 
     public void Die()
     {
         deathPS.Play();
-        Main.S.ShipDestroyed(this);
         Destroy(this.gameObject, 0.7f);
     }
 

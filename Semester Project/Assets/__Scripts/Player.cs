@@ -61,11 +61,13 @@ public class Player : MonoBehaviour
         {
            // Debug.Log("jasdfowaefjws");
             shieldLevel--;
-            Destroy(other.transform.root.gameObject);
+            //Destroy(other.transform.root.gameObject);
+            other.GetComponent<Projectile>().Die();
         }
         if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
+           // other.GetComponent<Enemy>().deathPS.Play();
             Destroy(other.transform.root.gameObject);
         }
         else if (other.transform.root.tag == "PowerUp")

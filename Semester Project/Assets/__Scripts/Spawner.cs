@@ -3,6 +3,13 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
 
+    public enum Orientation { Left, Right, Top, Bottom }
+    public Orientation orientation;
+
+    public bool isActive = true;
+
+
+    /*
     public GameObject spawnBox;
 
     public GameObject[] prefabEnemies;
@@ -70,5 +77,6 @@ public class Spawner : MonoBehaviour {
 //		Invoke("SpawnEnemy", 20);
 //		Debug.Log ("Rate is : "+enemySpawnRate);
     }
+    */
 
 }

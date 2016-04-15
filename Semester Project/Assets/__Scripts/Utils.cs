@@ -640,4 +640,14 @@ public class Easing
         return (u2);
     }
 
+    /// <summary>
+    /// Static class to improve readability
+    /// Example:
+    /// <code>
+    /// var selected = WeightedRandomizer.From(weights).TakeOne();
+    /// </code>
+    /// 
+    /// </summary>
+
+
 }
