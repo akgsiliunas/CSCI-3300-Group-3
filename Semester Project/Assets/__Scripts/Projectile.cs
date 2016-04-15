@@ -5,7 +5,9 @@ public class Projectile : MonoBehaviour {
 	[SerializeField]
 	private WeaponType _type;
 
+
     public ParticleSystem explosion;
+
 
 	public WeaponType type{
 		get{
@@ -31,6 +33,7 @@ public class Projectile : MonoBehaviour {
 			Destroy (this.gameObject);
 	}
 
+
     public void Die()
     {
 
@@ -52,5 +55,6 @@ public class Projectile : MonoBehaviour {
     }
 
     
+
 
 }

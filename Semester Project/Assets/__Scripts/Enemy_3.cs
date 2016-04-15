@@ -7,7 +7,6 @@ public class Enemy_3 : Enemy
 
     public float waveFrequency = 2;
     public float waveWidth = 4;
-
     private float x0;
     private float z0;
 
