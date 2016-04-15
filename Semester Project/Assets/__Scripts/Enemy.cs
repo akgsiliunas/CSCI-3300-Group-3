@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem deathPS;
 
+    public delegate void BossCountDelegate();
+    public BossCountDelegate bossCountDelegate;
+
     private bool isDead = false;
 
     public virtual void Start()
@@ -103,28 +106,6 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(-90, -180, 0));
     }
 
-    /*
-    void OnCollisionEnter(Collision collider)
-    {
-        GameObject other = collider.gameObject;
-
-        if (other.tag == "ProjectileHero")
-        {
-            Projectile p = other.GetComponent<Projectile>();
-            health -= Main.W_DEFS[p.type].damageOnHit;
-
-            //Debug.Log(Main.W_DEFS[p.type]);
-
-            Destroy(other);
-
-            if (health < 0)
-            {
-                Die(); 
-            }
-        }
-    }
-    */
-
     public void GatherHit(GameObject other)
     {
         Projectile p = other.GetComponent<Projectile>();
@@ -151,6 +132,18 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        if (bossCountDelegate != null)
+            bossCountDelegate();
+
+        // Turn off all mesh renderers and colliders on models
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Collider>() != null)
+                child.GetComponent<Collider>().enabled = false;
+            if (child.GetComponent<MeshRenderer>() != null)
+                child.GetComponent<MeshRenderer>().enabled = false;
+        }
+
         deathPS.Play();
         Destroy(this.gameObject, 0.7f);
     }

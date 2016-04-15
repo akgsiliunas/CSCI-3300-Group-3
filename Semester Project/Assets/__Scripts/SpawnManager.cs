@@ -14,6 +14,7 @@ public class BossDefinition
 {
     public GameObject bossPrefab;
     public int spawnProbability;
+    public int spawnCount;
 }
 
 public class SpawnManager : MonoBehaviour {
@@ -24,7 +25,8 @@ public class SpawnManager : MonoBehaviour {
     static public Dictionary<GameObject, int> spawnerDict;
     public SpawnerDefinition[] spawnerList;
 
-    static public Dictionary<GameObject, int> bossDict;
+    static public Dictionary<GameObject, int> bossTypeDict;
+    static public Dictionary<GameObject, int> bossCountDict;
     public BossDefinition[] bossList;
 
     // Stage variables
@@ -42,8 +44,8 @@ public class SpawnManager : MonoBehaviour {
     private float waveSpawnRate = 2f;
 
     // Stage Lifespans
-    private float waveCountDown = 60f;
-    private float waveLifeSpan = 20f;
+    private float waveCountDown = 30f;
+    private float waveLifeSpan = 2f;
     private float bossLifeSpan = 15f;
 
     // Randomized Spawner Variables
@@ -55,6 +57,8 @@ public class SpawnManager : MonoBehaviour {
     private bool bossSpawned = false;
     private int wormCount = 4;
     private int rookCount = 8;
+    private int bossCount = 1;
+    private int smokedBosses = 0;
 
 
     void Awake()
@@ -62,7 +66,8 @@ public class SpawnManager : MonoBehaviour {
 
         enemyDict = new Dictionary<GameObject, int>();
         spawnerDict = new Dictionary<GameObject, int>();
-        bossDict = new Dictionary<GameObject, int>();
+        bossTypeDict = new Dictionary<GameObject, int>();
+        bossCountDict = new Dictionary<GameObject, int>();
 
         foreach (EnemySpawnDefinition enemy in enemyList)
             enemyDict.Add(enemy.enemyPrefab, enemy.spawnProbability);
@@ -71,7 +76,11 @@ public class SpawnManager : MonoBehaviour {
             spawnerDict.Add(spawner.spawnerPrefab, spawner.spawnProbability);
 
         foreach (BossDefinition boss in bossList)
-            bossDict.Add(boss.bossPrefab, boss.spawnProbability);
+        {
+            bossTypeDict.Add(boss.bossPrefab, boss.spawnProbability);
+            bossCountDict.Add(boss.bossPrefab, boss.spawnCount);
+        }
+
     }
 
     void Update()
@@ -116,16 +125,15 @@ public class SpawnManager : MonoBehaviour {
         }
         else if (normalSpawning == false && waveSpawning == false && bossSpawning == true)
         {
-            if (timeChange > bossLifeSpan)
+            if (smokedBosses == bossCount)
             {
                 timeChange = 0f;
                 normalSpawning = true;
                 waveSpawning = false;
                 bossSpawning = false;
                 bossSpawned = false;
+                smokedBosses = 0;
             }
-            else
-                timeChange += Time.deltaTime;
         }
     }
 
@@ -166,24 +174,14 @@ public class SpawnManager : MonoBehaviour {
     {
         if (bossSpawned == false)
         {
-            GameObject boss = WeightedRandomizer.From(bossDict).TakeOne();
-            Debug.Log(boss.name);
 
-            if (boss.name == "Virus Boss")
-            {
-                firstSelectedSpawner = WeightedRandomizer.From(spawnerDict).TakeOne();
-                Spawn(boss, firstSelectedSpawner);
-            }
-            else if (boss.name == "Worm 6")
-            {
-                for (int i = 0; i < wormCount; i++)
-                    Spawn(boss, WeightedRandomizer.From(spawnerDict).TakeOne());
-            }
-            else if (boss.name == "Rook")
-            {
-                for (int i = 0; i < rookCount; i++)
-                    Spawn(boss, WeightedRandomizer.From(spawnerDict).TakeOne());
-            }
+            GameObject boss = WeightedRandomizer.From(bossTypeDict).TakeOne();
+            int spawnCount = bossCountDict[boss];
+            bossCount = spawnCount;
+
+            for (int i = 0; i < spawnCount; i++)
+                Spawn(boss, WeightedRandomizer.From(spawnerDict).TakeOne());
+ 
             bossSpawned = true;
         }
     }
@@ -194,6 +192,10 @@ public class SpawnManager : MonoBehaviour {
 
         Vector3 pos = Vector3.zero;
 
+        if (bossSpawning == true)
+            enemy.GetComponent<Enemy>().bossCountDelegate += IncrementBossCount;
+
+
         if (spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Left || spawner.GetComponent<Spawner>().orientation == Spawner.Orientation.Right)
         {
             float zMax = spawner.GetComponent<Renderer>().bounds.extents.z;
@@ -202,8 +204,6 @@ public class SpawnManager : MonoBehaviour {
             pos.z = Random.Range(zMax, zMin);
 
             pos.x = (spawner.GetComponent<Renderer>().bounds.center.x);
-
-            Debug.Log(enemy.name);
 
             // This let's the Rook know which direction to move on the platform
             if (enemy.name == "Rook(Clone)")
@@ -239,5 +239,11 @@ public class SpawnManager : MonoBehaviour {
         }
 
         enemy.transform.position = pos;
+    }
+
+    public void IncrementBossCount()
+    {
+        smokedBosses += 1;
+        Debug.Log("smokedCount is: " + smokedBosses);
     }
 }

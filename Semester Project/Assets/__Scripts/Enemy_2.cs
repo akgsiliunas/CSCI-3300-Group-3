@@ -39,7 +39,7 @@ public class Enemy_2 : Enemy {
 
         if (movement == Movement.Left || movement == Movement.Right)
         {
-            Debug.Log(negativeZ);
+           // Debug.Log(negativeZ);
 
             if (negativeZ == true)
                 tempPos.z = z0 + waveWidth * atan;
