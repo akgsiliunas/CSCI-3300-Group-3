@@ -10,10 +10,10 @@ public class ScoreManager : MonoBehaviour
 	[SerializeField]
 	private ScoreStat globalScoreStat;
 
-	public void addScore(int addedScore)
+	public void addScore(float addedScore)
 	{
-		globalScore += addedScore*(int)(UIManager.UM.DiffLevel*2);
-//		Debug.Log ("score: " + globalScore);
+		globalScore += (int)(addedScore*UIManager.UM.DiffLevel/2);
+		Debug.Log ("now score is: " + globalScore);
 		globalScoreStat.CurrentVal = globalScore;
 	}
 	
