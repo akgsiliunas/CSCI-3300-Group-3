@@ -44,8 +44,8 @@ public class SpawnManager : MonoBehaviour {
     private float waveSpawnRate = 2f;
 
     // Stage Lifespans
-    private float waveCountDown = 30f;
-    private float waveLifeSpan = 2f;
+    private float waveCountDown = 60f;
+    private float waveLifeSpan = 30f;
     private float bossLifeSpan = 15f;
 
     // Randomized Spawner Variables
@@ -55,8 +55,6 @@ public class SpawnManager : MonoBehaviour {
 
     // Boss Spawning Variables
     private bool bossSpawned = false;
-    private int wormCount = 4;
-    private int rookCount = 8;
     private int bossCount = 1;
     private int smokedBosses = 0;
 
