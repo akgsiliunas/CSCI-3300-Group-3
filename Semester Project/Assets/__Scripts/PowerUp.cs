@@ -54,6 +54,7 @@ public class PowerUp : MonoBehaviour {
         GameObject clone = Instantiate(weaponGraphic, weaponGraphicTransform.transform.position, weaponGraphicTransform.transform.rotation) as GameObject;
         clone.transform.parent = weaponGraphicTransform.transform.parent;
         clone.transform.position = weaponGraphicTransform.transform.position;
+        clone.transform.parent = clone.transform.root;
  
         type = wt;
     }
@@ -67,6 +68,10 @@ public class PowerUp : MonoBehaviour {
             if (child.GetComponent<MeshRenderer>() != null)
                 child.GetComponent<MeshRenderer>().enabled = false;
         }
+
+        // Stops bug where graphic's mesh renderer won't turn off. :/
+        //transform.DOScale(0f, 0f);
+
         absorbtion.Play();
 
         Destroy(this.gameObject, 1f);

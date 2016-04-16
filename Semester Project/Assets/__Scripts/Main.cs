@@ -70,15 +70,12 @@ public class Main : MonoBehaviour
     {
         if (Random.value <= powerUpDropChance)
         {
-            Debug.Log("I made past random check");
             int ndx = Random.Range(0, powerUpFrequency.Length);
             WeaponType puType = powerUpFrequency[ndx];
 
             GameObject go = Instantiate(prefabPowerUp) as GameObject;
             PowerUp pu = go.GetComponent<PowerUp>();
             pu.SetType(puType);
-
-            Debug.Log("I made past prefab");
 
             pu.transform.position = enemyPosition;
             

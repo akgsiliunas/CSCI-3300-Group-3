@@ -161,8 +161,9 @@ public class Weapon : MonoBehaviour {
         //go.transform.rotation = Quaternion.Euler(new Vector3(transform.root.rotation.x, transform.root.rotation.y, transform.root.rotation.z));
 
 
-        if (transform.root.tag == "Hero")
-            go.transform.localRotation = transform.root.rotation;
+        if (transform.parent.tag == "Hero")
+            go.transform.localRotation = transform.parent.rotation;
+        
 
         if (transform.root.tag == "Enemy")
         {
