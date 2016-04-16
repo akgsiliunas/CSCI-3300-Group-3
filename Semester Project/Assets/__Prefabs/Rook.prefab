@@ -438,11 +438,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 427310}
@@ -465,7 +468,6 @@ MonoBehaviour:
   score: 100
   collideDamage: 50
   powerUpDropChance: 1
-  _____________________: 0
   movement: 0
   weapons:
   - {fileID: 11423458}
@@ -521,7 +523,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -838,7 +840,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 11
+    type: 1
     radius: 1
     angle: 25
     length: 5

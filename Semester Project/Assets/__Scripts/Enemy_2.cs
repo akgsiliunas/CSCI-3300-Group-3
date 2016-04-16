@@ -16,9 +16,9 @@ public class Enemy_2 : Enemy {
 
     private float birthTime;
 
-    public override void Start()
+    protected override void Start()
     {
-        base.Orient();
+        base.Start();
 
         weapons[0].SetType(WeaponType.missile);
 
@@ -39,8 +39,6 @@ public class Enemy_2 : Enemy {
 
         if (movement == Movement.Left || movement == Movement.Right)
         {
-           // Debug.Log(negativeZ);
-
             if (negativeZ == true)
                 tempPos.z = z0 + waveWidth * atan;
             else
@@ -58,6 +56,4 @@ public class Enemy_2 : Enemy {
 
         base.Move();
     }
-
-
 }
