@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class PowerUpSpawnDefinition
+{
+    public WeaponType type;
+    public int spawnProbability;
+}
+
 public class Main : MonoBehaviour
 {
     static public Main S;
@@ -12,13 +19,10 @@ public class Main : MonoBehaviour
     public float enemySpawnPadding = 1.5f;
 	public WeaponDefinition[] weaponDefinitions;
 
-    public GameObject prefabPowerUp;
-    public WeaponType[] powerUpFrequency = new WeaponType[]
-    {
-        WeaponType.blaster, WeaponType.blaster,
-        WeaponType.spread,
-        WeaponType.shield
-    };
+    static public Dictionary<WeaponType, int> powerUpDict;
+    public PowerUpSpawnDefinition[] powerUpFrequency;
+
+    public GameObject powerUpPrefab;
 
     public bool ____________;
 
@@ -33,10 +37,13 @@ public class Main : MonoBehaviour
         //Invoke("SpawnEnemy", enemySpawnRate);
 
 		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
-		foreach (WeaponDefinition def in weaponDefinitions) {
-			W_DEFS [def.type] = def;
-		}
+        powerUpDict = new Dictionary<WeaponType, int>();
 
+        foreach (WeaponDefinition def in weaponDefinitions) 
+			W_DEFS [def.type] = def;
+
+        foreach (PowerUpSpawnDefinition powerUp in powerUpFrequency)
+            powerUpDict.Add(powerUp.type, powerUp.spawnProbability);
     }
 
 	static public WeaponDefinition GetWeaponDefinition(WeaponType wt){
@@ -70,15 +77,25 @@ public class Main : MonoBehaviour
     {
         if (Random.value <= powerUpDropChance)
         {
-            int ndx = Random.Range(0, powerUpFrequency.Length);
-            WeaponType puType = powerUpFrequency[ndx];
 
-            GameObject go = Instantiate(prefabPowerUp) as GameObject;
-            PowerUp pu = go.GetComponent<PowerUp>();
-            pu.SetType(puType);
+            WeaponType weaponType = WeightedRandomizer.From(powerUpDict).TakeOne();
 
-            pu.transform.position = enemyPosition;
-            
+            GameObject clone = Instantiate(powerUpPrefab) as GameObject;
+
+            PowerUp powerUp = clone.GetComponent<PowerUp>();
+            powerUp.SetType(weaponType);
+
+            powerUp.transform.position = enemyPosition;
+
+            //int ndx = Random.Range(0, powerUpFrequency.Length);
+            //WeaponType puType = powerUpFrequency[ndx];
+
+            // GameObject go = Instantiate(prefabPowerUp) as GameObject;
+            //PowerUp pu = go.GetComponent<PowerUp>();
+            //pu.SetType(puType);
+
+            // pu.transform.position = enemyPosition;
+
         }
     }
 
