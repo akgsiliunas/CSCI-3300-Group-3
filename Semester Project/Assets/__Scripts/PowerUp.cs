@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class PowerUp : MonoBehaviour {
 
 
     public Vector2 rotMinMax = new Vector2(15, 90);
-    public Vector2 driftMinMax = new Vector2(.25f, 2);
+    //public Vector2 driftMinMax = new Vector2(.25f, 2);
     public float lifeTime = 6f;
     public float fadeTime = 4f;
 
@@ -13,23 +14,27 @@ public class PowerUp : MonoBehaviour {
 
     public WeaponType type;
     public GameObject cube;
-    public TextMesh letter;
+    // public TextMesh letter;
+    private GameObject weaponGraphic;
+
+    public GameObject weaponGraphicTransform;
+
     public Vector3 rotPerSecond;
     public float birthTime;
 
     void Awake()
     {
-        cube = transform.Find("Cube").gameObject;
+        //cube = transform.Find("Cube").gameObject;
 
-        letter = GetComponent<TextMesh>();
+        //letter = GetComponent<TextMesh>();
 
-        Vector3 vel = Random.onUnitSphere;
+        //Vector3 vel = Random.onUnitSphere;
 
-        vel.z = 0;
-        vel.Normalize();
-        vel *= Random.Range(driftMinMax.x, driftMinMax.y);
+        //vel.z = 0;
+        //vel.Normalize();
+        //vel *= Random.Range(driftMinMax.x, driftMinMax.y);
 
-        GetComponent<Rigidbody>().velocity = vel;
+        //GetComponent<Rigidbody>().velocity = vel;
 
         transform.rotation = Quaternion.identity;
 
@@ -61,7 +66,16 @@ public class PowerUp : MonoBehaviour {
     public void SetType( WeaponType wt)
     {
         WeaponDefinition def = Main.GetWeaponDefinition(wt);
-        letter.text = def.letter;
+        //letter.text = def.letter;
+
+        weaponGraphic = def.weaponGraphic;
+        GameObject clone = Instantiate(weaponGraphic, weaponGraphicTransform.transform.position, weaponGraphicTransform.transform.rotation) as GameObject;
+
+
+        clone.transform.parent = weaponGraphicTransform.transform.parent;
+
+        clone.transform.position = weaponGraphicTransform.transform.position;
+ 
         type = wt;
     }
 

@@ -66,10 +66,11 @@ public class Main : MonoBehaviour
         Invoke("SpawnEnemy", enemySpawnRate);
     }
 
-    public void ShipDestroyed( Enemy e)
+    public void ShipDestroyed(float powerUpDropChance, Vector3 enemyPosition)
     {
-        if (Random.value <= e.powerUpDropChance)
+        if (Random.value <= powerUpDropChance)
         {
+            Debug.Log("I made past random check");
             int ndx = Random.Range(0, powerUpFrequency.Length);
             WeaponType puType = powerUpFrequency[ndx];
 
@@ -77,7 +78,9 @@ public class Main : MonoBehaviour
             PowerUp pu = go.GetComponent<PowerUp>();
             pu.SetType(puType);
 
-            pu.transform.position = e.transform.position;
+            Debug.Log("I made past prefab");
+
+            pu.transform.position = enemyPosition;
             
         }
     }

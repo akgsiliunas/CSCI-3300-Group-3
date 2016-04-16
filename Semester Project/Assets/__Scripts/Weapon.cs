@@ -17,6 +17,7 @@ public class WeaponDefinition {
 	public string letter;
 	public Color color = Color.white;
 	public GameObject projectilePrefab;
+    public GameObject weaponGraphic;
 	public Color projectileColor = Color.white;
 	public float damageOnHit = 0;
     public float continuousDamage = 0;
