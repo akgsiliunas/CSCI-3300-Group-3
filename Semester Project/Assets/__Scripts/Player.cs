@@ -112,7 +112,13 @@ public class Player : MonoBehaviour
         switch (pu.type)
         {
             case WeaponType.shield:
-                shieldLevel++;
+                WeaponDefinition shieldDef = Main.GetWeaponDefinition(WeaponType.shield);
+                _shieldLevel += shieldDef.shieldValue;
+                break;
+
+            case WeaponType.repair:
+                WeaponDefinition repairDef = Main.GetWeaponDefinition(WeaponType.repair);
+                Core.C.Repair(repairDef.repairValue);
                 break;
 
             default:

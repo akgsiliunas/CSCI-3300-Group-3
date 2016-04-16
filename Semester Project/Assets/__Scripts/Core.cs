@@ -27,6 +27,9 @@ public class Core : MonoBehaviour {
         coreAnimator.SetFloat("Health", health.MaxVal);
         deathPS.Pause();
     }
+
+
+
 	
 	void Update () {
 
@@ -45,6 +48,11 @@ public class Core : MonoBehaviour {
     public void Damage(float damageValue)
     {
         health.CurrentVal -= damageValue;
+    }
+
+    public void Repair(float repairValue)
+    {
+        health.CurrentVal += repairValue;
     }
 
 
