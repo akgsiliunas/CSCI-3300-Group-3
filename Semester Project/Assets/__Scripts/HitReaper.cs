@@ -11,9 +11,10 @@ public class HitReaper : MonoBehaviour
         if (other.tag == "ProjectileHero")
         {
             this.transform.root.GetComponent<Enemy>().GatherHit(other);
+
             //Destroy(other);
 
-            this.GetComponent<Projectile>().Die();
+          other.GetComponent<Projectile>().Die();
         }
     }
 }
