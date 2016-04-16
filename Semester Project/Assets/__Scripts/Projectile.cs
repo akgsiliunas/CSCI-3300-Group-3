@@ -33,7 +33,6 @@ public class Projectile : MonoBehaviour {
 
     public void Die()
     {
-
         this.GetComponent<MeshRenderer>().enabled = false;
 
         this.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -48,9 +47,5 @@ public class Projectile : MonoBehaviour {
         explosion.Play();
 
         Destroy(this.gameObject,3f);
-
     }
-
-    
-
 }
