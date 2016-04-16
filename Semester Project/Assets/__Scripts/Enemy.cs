@@ -29,9 +29,9 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        speed = speed * UIManager.UM.DiffLevel;
-        fireRate = fireRate * UIManager.UM.DiffLevel;
-        health = 10 * UIManager.UM.DiffLevel;
+        //speed = speed * UIManager.UM.DiffLevel;
+        //fireRate = fireRate * UIManager.UM.DiffLevel;
+        //health = 10 * UIManager.UM.DiffLevel;
 
         Orient();
     }

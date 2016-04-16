@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy_1 : Enemy {
+// Standard Virus Movement and Shooting Code
 
-    //public float speed = 2.0f * UIManager.DiffLevel;
+public class Enemy_1 : Enemy {
 
     public float waveFrequency = 2;
     public float waveWidth = 4;
-    //public float waveRot = 10;
 
     private float x0;  
     private float z0;
@@ -17,7 +16,7 @@ public class Enemy_1 : Enemy {
 
 	protected override void Start () {
 
-        base.Orient();
+        base.Start();
 
         weapons[0].SetType(WeaponType.blaster);
 
@@ -27,7 +26,6 @@ public class Enemy_1 : Enemy {
         birthTime = Time.time;
 
         InvokeRepeating("Fire", fireRate, fireRate);
-
     }
 
     public override void Move()
@@ -44,10 +42,6 @@ public class Enemy_1 : Enemy {
             tempPos.x = x0 + waveWidth * sin;
 
         pos = tempPos;
-
-        // Rotate
-        //Vector3 rot = new Vector3(-90, 0, sin * waveRot);
-        //this.transform.rotation = Quaternion.Euler(rot);
 
         base.Move();
     }
