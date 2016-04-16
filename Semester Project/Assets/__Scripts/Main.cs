@@ -2,41 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class PowerUpSpawnDefinition
+{
+    public WeaponType type;
+    public int spawnProbability;
+}
+
 public class Main : MonoBehaviour
 {
     static public Main S;
 	static public Dictionary<WeaponType,WeaponDefinition> W_DEFS;
 
-    public GameObject[] prefabEnemies;
-    public float enemySpawnPerSecond = 0.5f;
-    public float enemySpawnPadding = 1.5f;
 	public WeaponDefinition[] weaponDefinitions;
 
-    public GameObject prefabPowerUp;
-    public WeaponType[] powerUpFrequency = new WeaponType[]
-    {
-        WeaponType.blaster, WeaponType.blaster,
-        WeaponType.spread,
-        WeaponType.shield
-    };
+    static public Dictionary<WeaponType, int> powerUpDict;
+    public PowerUpSpawnDefinition[] powerUpFrequency;
 
-    public bool ____________;
+    public GameObject powerUpPrefab;
 
 	public WeaponType[] activeWeaponTypes;
-    public float enemySpawnRate;
 
     void Awake()
     {
         S = this;
         Utils.SetCameraBounds(this.GetComponent<Camera>());
-        enemySpawnRate = 1f / enemySpawnPerSecond;
-        //Invoke("SpawnEnemy", enemySpawnRate);
 
 		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
-		foreach (WeaponDefinition def in weaponDefinitions) {
-			W_DEFS [def.type] = def;
-		}
+        powerUpDict = new Dictionary<WeaponType, int>();
 
+        foreach (WeaponDefinition def in weaponDefinitions) 
+			W_DEFS [def.type] = def;
+
+        foreach (PowerUpSpawnDefinition powerUp in powerUpFrequency)
+            powerUpDict.Add(powerUp.type, powerUp.spawnProbability);
     }
 
 	static public WeaponDefinition GetWeaponDefinition(WeaponType wt){
@@ -52,33 +51,19 @@ public class Main : MonoBehaviour
 		}
 	}
 
-    public void SpawnEnemy()
-    {
-        int ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
-        Vector3 pos = Vector3.zero;
-        float xMin = Utils.camBounds.min.x + enemySpawnPadding;
-        float xMax = Utils.camBounds.max.x - enemySpawnPadding;
-        pos.x = Random.Range(xMin, xMax);
-        pos.z = -1*(Utils.camBounds.max.z + enemySpawnPadding);
-        //pos.y = Utils.camBounds.max.y + enemySpawnPadding;
-        go.transform.position = pos;
-        Invoke("SpawnEnemy", enemySpawnRate);
-    }
-
     public void ShipDestroyed(float powerUpDropChance, Vector3 enemyPosition)
     {
         if (Random.value <= powerUpDropChance)
         {
-            int ndx = Random.Range(0, powerUpFrequency.Length);
-            WeaponType puType = powerUpFrequency[ndx];
 
-            GameObject go = Instantiate(prefabPowerUp) as GameObject;
-            PowerUp pu = go.GetComponent<PowerUp>();
-            pu.SetType(puType);
+            WeaponType weaponType = WeightedRandomizer.From(powerUpDict).TakeOne();
 
-            pu.transform.position = enemyPosition;
-            
+            GameObject clone = Instantiate(powerUpPrefab) as GameObject;
+
+            PowerUp powerUp = clone.GetComponent<PowerUp>();
+            powerUp.SetType(weaponType);
+
+            powerUp.transform.position = enemyPosition;
         }
     }
 
