@@ -9,8 +9,6 @@ public class Regenerator : MonoBehaviour {
     public int regenAmount = 1;
     private float timeChange = 0f;
 
-
-
     // Use this for initialization
     void Start () {
 	
@@ -25,10 +23,7 @@ public class Regenerator : MonoBehaviour {
     {
         if (other.transform.root.tag == "Hero")
             RegenShield(other);
-
     }
-
-  
 
     public void RegenShield(Collider hero)
     {

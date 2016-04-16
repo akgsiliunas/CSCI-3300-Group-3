@@ -66,6 +66,9 @@ public class SpawnManager : MonoBehaviour {
     private int bossCount = 1;
     private int smokedBosses = 0;
 
+    // Regenerator Reference
+    public GameObject regenerator;
+
 
     void Awake()
     {
@@ -113,6 +116,8 @@ public class SpawnManager : MonoBehaviour {
                 normalSpawning = false;
                 waveSpawning = true;
                 bossSpawning = false;
+
+                regenerator.SetActive(false);
             }
             else
                 timeChange += Time.deltaTime;
@@ -139,6 +144,8 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawning = false;
                 bossSpawned = false;
                 smokedBosses = 0;
+
+                regenerator.SetActive(true); 
             }
         }
     }
@@ -250,6 +257,5 @@ public class SpawnManager : MonoBehaviour {
     public void IncrementBossCount()
     {
         smokedBosses += 1;
-        Debug.Log("smokedCount is: " + smokedBosses);
     }
 }
