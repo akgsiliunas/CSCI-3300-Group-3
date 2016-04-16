@@ -5769,7 +5769,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 142826, guid: 15e44742d672edf4eb01eda730e15f13, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11434342, guid: 15e44742d672edf4eb01eda730e15f13, type: 2}
       propertyPath: _shieldLevel
