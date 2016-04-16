@@ -30,9 +30,15 @@ public class Player : MonoBehaviour
         weapons[0].SetType(WeaponType.blaster);
     }
 
+    void OnColliderEnter(Collider co)
+    {
+        Debug.Log(co.gameObject.name);
+    }
+
+
     public virtual void Update()
     {
-
+       // Debug.Log(shieldLevel);
     }
     
     /*
@@ -103,7 +109,7 @@ public class Player : MonoBehaviour
     public void AddShieldLevel(int amount)
     {
         _shieldLevel = Mathf.Min(maxShieldStrength, _shieldLevel + amount);
-        Debug.Log(_shieldLevel);
+      //  Debug.Log(_shieldLevel);
     }
 
     public void AbsorbPowerUp(GameObject go)
