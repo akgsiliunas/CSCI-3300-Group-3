@@ -14,9 +14,6 @@ public class Main : MonoBehaviour
     static public Main S;
 	static public Dictionary<WeaponType,WeaponDefinition> W_DEFS;
 
-    public GameObject[] prefabEnemies;
-    public float enemySpawnPerSecond = 0.5f;
-    public float enemySpawnPadding = 1.5f;
 	public WeaponDefinition[] weaponDefinitions;
 
     static public Dictionary<WeaponType, int> powerUpDict;
@@ -24,17 +21,12 @@ public class Main : MonoBehaviour
 
     public GameObject powerUpPrefab;
 
-    public bool ____________;
-
 	public WeaponType[] activeWeaponTypes;
-    public float enemySpawnRate;
 
     void Awake()
     {
         S = this;
         Utils.SetCameraBounds(this.GetComponent<Camera>());
-        enemySpawnRate = 1f / enemySpawnPerSecond;
-        //Invoke("SpawnEnemy", enemySpawnRate);
 
 		W_DEFS = new Dictionary<WeaponType,WeaponDefinition> ();
         powerUpDict = new Dictionary<WeaponType, int>();
@@ -59,20 +51,6 @@ public class Main : MonoBehaviour
 		}
 	}
 
-    public void SpawnEnemy()
-    {
-        int ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate(prefabEnemies[ndx]) as GameObject;
-        Vector3 pos = Vector3.zero;
-        float xMin = Utils.camBounds.min.x + enemySpawnPadding;
-        float xMax = Utils.camBounds.max.x - enemySpawnPadding;
-        pos.x = Random.Range(xMin, xMax);
-        pos.z = -1*(Utils.camBounds.max.z + enemySpawnPadding);
-        //pos.y = Utils.camBounds.max.y + enemySpawnPadding;
-        go.transform.position = pos;
-        Invoke("SpawnEnemy", enemySpawnRate);
-    }
-
     public void ShipDestroyed(float powerUpDropChance, Vector3 enemyPosition)
     {
         if (Random.value <= powerUpDropChance)
@@ -86,16 +64,6 @@ public class Main : MonoBehaviour
             powerUp.SetType(weaponType);
 
             powerUp.transform.position = enemyPosition;
-
-            //int ndx = Random.Range(0, powerUpFrequency.Length);
-            //WeaponType puType = powerUpFrequency[ndx];
-
-            // GameObject go = Instantiate(prefabPowerUp) as GameObject;
-            //PowerUp pu = go.GetComponent<PowerUp>();
-            //pu.SetType(puType);
-
-            // pu.transform.position = enemyPosition;
-
         }
     }
 
