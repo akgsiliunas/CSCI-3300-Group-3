@@ -162,11 +162,8 @@ public class Weapon : MonoBehaviour {
 
 
         if (transform.parent.tag == "Hero")
-        {
-            Debug.Log(transform.parent.tag);
-
             go.transform.localRotation = transform.parent.rotation;
-        }
+        
 
         if (transform.root.tag == "Enemy")
         {

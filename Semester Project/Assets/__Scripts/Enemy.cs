@@ -118,7 +118,6 @@ public class Enemy : MonoBehaviour
 
             if (isDead == false)
             {
-                Debug.Log("I made it to death");
                 Main.S.ShipDestroyed(powerUpDropChance, this.transform.position);
                 isDead = true;
             }
