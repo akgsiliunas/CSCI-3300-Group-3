@@ -52,8 +52,8 @@ public class SpawnManager : MonoBehaviour {
     private float waveSpawnRate = 2f;
 
     // Stage Lifespans
-    private float waveCountDown = 60f;
-    private float waveLifeSpan = 30f;
+    private float waveCountDown = 5f;
+    private float waveLifeSpan = 5f;
     private float bossLifeSpan = 15f;
 
     // Randomized Spawner Variables
@@ -68,6 +68,12 @@ public class SpawnManager : MonoBehaviour {
 
     // Regenerator Reference
     public GameObject regenerator;
+
+    // Music Clips
+    public AudioClip bossStageMusic;
+    public AudioClip waveStageMusic;
+    public AudioClip normalStageMusic;
+    public AudioSource audioSource;
 
 
     void Awake()
@@ -118,6 +124,8 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawning = false;
 
                 regenerator.SetActive(false);
+                audioSource.clip = waveStageMusic;
+                audioSource.Play();
             }
             else
                 timeChange += Time.deltaTime;
@@ -130,6 +138,10 @@ public class SpawnManager : MonoBehaviour {
                 normalSpawning = false;
                 waveSpawning = false;
                 bossSpawning = true;
+
+                audioSource.clip = bossStageMusic;
+                audioSource.loop = true;
+                audioSource.Play();
             }
             else
                 timeChange += Time.deltaTime;
@@ -145,7 +157,10 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawned = false;
                 smokedBosses = 0;
 
-                regenerator.SetActive(true); 
+                regenerator.SetActive(true);
+                audioSource.clip = normalStageMusic;
+                audioSource.loop = false;
+                audioSource.Play();
             }
         }
     }
