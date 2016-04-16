@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 
 [System.Serializable]
@@ -96,6 +97,8 @@ public class SpawnManager : MonoBehaviour {
             bossCountDict.Add(boss.bossPrefab, boss.spawnCount);
         }
 
+        audioSource.Play();
+
     }
 
     void Update()
@@ -116,7 +119,7 @@ public class SpawnManager : MonoBehaviour {
     {
         if (normalSpawning == true && waveSpawning == false && bossSpawning == false)
         {
-            if (timeChange > waveCountDown)
+            if (timeChange > normalStageMusic.length)
             {
                 timeChange = 0f;
                 normalSpawning = false;
@@ -132,16 +135,20 @@ public class SpawnManager : MonoBehaviour {
         }
         else if (normalSpawning == false && waveSpawning == true && bossSpawning == false)
         {
-            if (timeChange > waveLifeSpan)
+            if (timeChange > waveStageMusic.length)
             {
                 timeChange = 0f;
                 normalSpawning = false;
                 waveSpawning = false;
                 bossSpawning = true;
 
+                audioSource.DOFade(0, 1f);
+
                 audioSource.clip = bossStageMusic;
                 audioSource.loop = true;
                 audioSource.Play();
+
+                audioSource.DOFade(1f, 10f);
             }
             else
                 timeChange += Time.deltaTime;
@@ -157,10 +164,14 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawned = false;
                 smokedBosses = 0;
 
+                audioSource.DOFade(0, 1f); ;
+
                 regenerator.SetActive(true);
                 audioSource.clip = normalStageMusic;
                 audioSource.loop = false;
                 audioSource.Play();
+
+                audioSource.DOFade(1f, 10f);
             }
         }
     }
