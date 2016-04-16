@@ -1,26 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class EnemySpawnDefinition
-{
-    public GameObject enemyPrefab;
-    public int spawnProbability;
-}
-
 public class Enemy : MonoBehaviour
 {
+    public float speed = 2.0f;
+    public float fireRate = 0.3f;
+    public float health = 10;
 
-
-    public float speed = 2.0f * UIManager.UM.DiffLevel;
-    public float fireRate = 0.3f * UIManager.UM.DiffLevel;
-    public float health = 10 * UIManager.UM.DiffLevel;
     public int score;
     public float collideDamage = 50f;
 
     public float powerUpDropChance = 1f;
-
-    public bool _____________________;
 
     public enum Movement { Left, Right, Top, Bottom};
     public Movement movement;
@@ -30,32 +20,27 @@ public class Enemy : MonoBehaviour
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
-    public ParticleSystem deathPS;
-
     public delegate void BossCountDelegate();
     public BossCountDelegate bossCountDelegate;
 
+    public ParticleSystem deathPS;
+
     private bool isDead = false;
 
-    public virtual void Start()
+    protected virtual void Start()
     {
-        //Debug.Log("speed: " + this.speed);
+        speed = speed * UIManager.UM.DiffLevel;
+        fireRate = fireRate * UIManager.UM.DiffLevel;
+        health = 10 * UIManager.UM.DiffLevel;
+
         deathPS.Pause();
         Orient();
-        //FreezeContraints();
-        //Debug.Log("health: " + health);
-        //Debug.Log("Rate: " + fireRate);
     }
 
-    public virtual void Fire() {
 
-        if (fireDelegate != null)
-            fireDelegate();
-    }
 
     void Update()
     {
-       // Debug.Log(movement);
         Move();
     }
 
@@ -124,6 +109,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+    public virtual void Fire()
+    {
+
+        if (fireDelegate != null)
+            fireDelegate();
+    }
+
     public void CollisionDie()
     {
         deathPS.Play();
@@ -147,5 +140,7 @@ public class Enemy : MonoBehaviour
         deathPS.Play();
         Destroy(this.gameObject, 0.7f);
     }
+
+
 
 }

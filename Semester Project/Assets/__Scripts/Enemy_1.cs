@@ -15,7 +15,7 @@ public class Enemy_1 : Enemy {
     private float birthTime;
 
 
-	public override void Start () {
+	void Start () {
 
         base.Orient();
 

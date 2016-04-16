@@ -7,7 +7,7 @@ using System.Collections;
 public class Enemy_4 : Enemy
 {
 
-    public override void Start()
+    void Start()
     {
 
         base.Orient();
