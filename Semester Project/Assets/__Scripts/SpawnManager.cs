@@ -257,6 +257,5 @@ public class SpawnManager : MonoBehaviour {
     public void IncrementBossCount()
     {
         smokedBosses += 1;
-        Debug.Log("smokedCount is: " + smokedBosses);
     }
 }
