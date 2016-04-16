@@ -8,7 +8,8 @@ public enum WeaponType{
 	phaser,
 	missile,
 	bomblast,
-	shield
+	shield,
+    repair
 }
 
 [System.Serializable]
@@ -23,6 +24,8 @@ public class WeaponDefinition {
     public float continuousDamage = 0;
 	public float delayBetweenShots = 0;
 	public float velocity = 20;
+    public float repairValue;
+    public float shieldValue;
 }
 
 public class Weapon : MonoBehaviour {
