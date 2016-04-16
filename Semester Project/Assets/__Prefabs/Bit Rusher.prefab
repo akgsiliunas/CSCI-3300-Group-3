@@ -186,7 +186,6 @@ MonoBehaviour:
   score: 100
   collideDamage: 50
   powerUpDropChance: 1
-  _____________________: 0
   movement: 0
   weapons: []
   deathPS: {fileID: 19854374}
@@ -249,7 +248,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:

@@ -1382,11 +1382,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 436884}
@@ -1410,11 +1413,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 498692}
@@ -1437,7 +1443,6 @@ MonoBehaviour:
   score: 1000
   collideDamage: 200
   powerUpDropChance: 0
-  _____________________: 0
   movement: 0
   weapons:
   - {fileID: 11404646}
@@ -1464,11 +1469,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 417630}
@@ -1492,11 +1500,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 410698}
@@ -1520,11 +1531,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 498672}
@@ -1577,7 +1591,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:

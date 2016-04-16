@@ -33,11 +33,8 @@ public class Enemy : MonoBehaviour
         fireRate = fireRate * UIManager.UM.DiffLevel;
         health = 10 * UIManager.UM.DiffLevel;
 
-        deathPS.Pause();
         Orient();
     }
-
-
 
     void Update()
     {
@@ -60,7 +57,6 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
-       // Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
