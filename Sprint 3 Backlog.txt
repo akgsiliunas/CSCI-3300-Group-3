@@ -14,15 +14,12 @@ Reduce player movement sensitivity
 Restart game after high score scene
 Fix "1st place" bug in high score scene
 Create demo video package
-Redesign Powerup asthetics
-fix bullets that don't dissappear on contact
 Create vertical core health bar
 Create vertical wave timer bar
 Create 4 shield health bars for players
 Wrap cabinet in duct tape
 Drill in holes and install joysticks
 Implement Xbox controller support
-Rework Boss Stage spawning from timer to objective count type system
 
 --Change aspect ratio to 4:3
 --Install bumpers
@@ -37,8 +34,14 @@ Rework Boss Stage spawning from timer to objective count type system
 --Create form-fitting shields
 --Create boss fights
 --set-up virus boss
+--Rework Boss Stage spawning from timer to objective count type system
 --set-up rook
+--Redesign Powerup asthetics
+--fix bullets that don't dissappear on contact
 --add projectile explosion effects
 --fix projectile initial spawn issues
+--redesigned player shields
+--added custom music to the game
+
 
 
