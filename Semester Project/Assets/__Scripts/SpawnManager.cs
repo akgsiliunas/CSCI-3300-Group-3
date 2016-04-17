@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 
 [System.Serializable]
@@ -52,8 +53,8 @@ public class SpawnManager : MonoBehaviour {
     private float waveSpawnRate = 2f;
 
     // Stage Lifespans
-    private float waveCountDown = 60f;
-    private float waveLifeSpan = 30f;
+    private float waveCountDown = 5f;
+    private float waveLifeSpan = 5f;
     private float bossLifeSpan = 15f;
 
     // Randomized Spawner Variables
@@ -68,6 +69,12 @@ public class SpawnManager : MonoBehaviour {
 
     // Regenerator Reference
     public GameObject regenerator;
+
+    // Music Clips
+    public AudioClip bossStageMusic;
+    public AudioClip waveStageMusic;
+    public AudioClip normalStageMusic;
+    public AudioSource audioSource;
 
 
     void Awake()
@@ -90,6 +97,8 @@ public class SpawnManager : MonoBehaviour {
             bossCountDict.Add(boss.bossPrefab, boss.spawnCount);
         }
 
+        audioSource.Play();
+
     }
 
     void Update()
@@ -110,7 +119,7 @@ public class SpawnManager : MonoBehaviour {
     {
         if (normalSpawning == true && waveSpawning == false && bossSpawning == false)
         {
-            if (timeChange > waveCountDown)
+            if (timeChange > normalStageMusic.length)
             {
                 timeChange = 0f;
                 normalSpawning = false;
@@ -118,18 +127,28 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawning = false;
 
                 regenerator.SetActive(false);
+                audioSource.clip = waveStageMusic;
+                audioSource.Play();
             }
             else
                 timeChange += Time.deltaTime;
         }
         else if (normalSpawning == false && waveSpawning == true && bossSpawning == false)
         {
-            if (timeChange > waveLifeSpan)
+            if (timeChange > waveStageMusic.length)
             {
                 timeChange = 0f;
                 normalSpawning = false;
                 waveSpawning = false;
                 bossSpawning = true;
+
+                audioSource.DOFade(0, 1f);
+
+                audioSource.clip = bossStageMusic;
+                audioSource.loop = true;
+                audioSource.Play();
+
+                audioSource.DOFade(1f, 10f);
             }
             else
                 timeChange += Time.deltaTime;
@@ -145,7 +164,14 @@ public class SpawnManager : MonoBehaviour {
                 bossSpawned = false;
                 smokedBosses = 0;
 
-                regenerator.SetActive(true); 
+                audioSource.DOFade(0, 1f); ;
+
+                regenerator.SetActive(true);
+                audioSource.clip = normalStageMusic;
+                audioSource.loop = false;
+                audioSource.Play();
+
+                audioSource.DOFade(1f, 10f);
             }
         }
     }
