@@ -7,8 +7,9 @@ public enum WeaponType{
 	spread,
 	phaser,
 	missile,
-	laser,
-	shield
+	bomblast,
+	shield,
+    repair
 }
 
 [System.Serializable]
@@ -17,11 +18,14 @@ public class WeaponDefinition {
 	public string letter;
 	public Color color = Color.white;
 	public GameObject projectilePrefab;
+    public GameObject weaponGraphic;
 	public Color projectileColor = Color.white;
 	public float damageOnHit = 0;
     public float continuousDamage = 0;
 	public float delayBetweenShots = 0;
 	public float velocity = 20;
+    public float repairValue;
+    public float shieldValue;
 }
 
 public class Weapon : MonoBehaviour {
@@ -43,7 +47,9 @@ public class Weapon : MonoBehaviour {
     {
         collar = transform.Find("Collar").gameObject;
 
-        GameObject parentGo = transform.parent.gameObject;
+        GameObject parentGo = transform.root.gameObject;
+
+        //GameObject parentGo = transform.parent.gameObject;
 
         if (parentGo.tag == "Enemy")
             transform.root.GetComponent<Enemy>().fireDelegate += Fire;
@@ -108,8 +114,6 @@ public class Weapon : MonoBehaviour {
                 //p.GetComponent<Rigidbody>().velocity = Vector3.left * def.velocity;
                 break;
 
-    
-
             case WeaponType.spread:
                 p = MakeProjectile();
                 p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
@@ -123,6 +127,22 @@ public class Weapon : MonoBehaviour {
                 p.GetComponent<Rigidbody>().velocity = (right.position - collar.transform.position) * def.velocity;
                 //p.GetComponent<Rigidbody>().velocity = new Vector3(0.2f, 0, -0.9f) * def.velocity;
                 break;
+
+            case WeaponType.phaser:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
+                break;
+
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
+                break;
+
+            case WeaponType.bomblast:
+                p = MakeProjectile();
+                p.GetComponent<Rigidbody>().velocity = (center.position - collar.transform.position) * def.velocity;
+                break;
+
         }
 
     }
@@ -138,7 +158,34 @@ public class Weapon : MonoBehaviour {
 			go.layer = LayerMask.NameToLayer ("ProjectileEnemy");
 		}
 		go.transform.position = collar.transform.position;
-        go.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+        //go.transform.rotation = Quaternion.Euler(new Vector3(transform.root.rotation.x, transform.root.rotation.y, transform.root.rotation.z));
+
+
+        if (transform.parent.tag == "Hero")
+            go.transform.localRotation = transform.parent.rotation;
+        
+
+        if (transform.root.tag == "Enemy")
+        {
+
+            Vector3 rotationVector = transform.root.eulerAngles;
+            rotationVector.y += 180;
+            go.transform.localRotation = Quaternion.Euler(rotationVector);
+
+
+
+          //  go.transform.localRotation = transform.root.rotation;
+
+
+
+            //go.transform.localRotation = Quaternion.Euler(transform.root.localRotation.x, transform.root.localRotation.y, transform.root.localRotation.z);
+
+        }
+
+
+
+        //go.transform.localRotation = Quaternion.EulerRotation(new Vector3(transform.root.rotation.z, transform.root.rotation.x, transform.root.rotation.y));
+
         go.transform.parent = PROJECTILE_ANCHOR;
 		Projectile p = go.GetComponent<Projectile> ();
 		p.type = type;

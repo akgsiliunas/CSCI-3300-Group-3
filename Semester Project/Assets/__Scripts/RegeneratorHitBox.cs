@@ -8,7 +8,8 @@ public class RegeneratorHitBox : MonoBehaviour {
         GameObject other = collider.gameObject;
 
         if (other.tag == "ProjectileEnemy" || other.tag == "ProjectileHero")
-            Destroy(other);
+            other.GetComponent<Projectile>().Die();
+                //Destroy(other);
     }
 
 }

@@ -27,6 +27,9 @@ public class Core : MonoBehaviour {
         coreAnimator.SetFloat("Health", health.MaxVal);
         deathPS.Pause();
     }
+
+
+
 	
 	void Update () {
 
@@ -47,6 +50,11 @@ public class Core : MonoBehaviour {
         health.CurrentVal -= damageValue;
     }
 
+    public void Repair(float repairValue)
+    {
+        health.CurrentVal += repairValue;
+    }
+
 
     void OnTriggerEnter(Collider collider)
     {
@@ -56,7 +64,8 @@ public class Core : MonoBehaviour {
         {
             Projectile p = other.GetComponent<Projectile>();
             health.CurrentVal -= Main.W_DEFS[p.type].damageOnHit;
-            Destroy(other);
+            //Destroy(other);
+            other.GetComponent<Projectile>().Die();
         }
     }
 

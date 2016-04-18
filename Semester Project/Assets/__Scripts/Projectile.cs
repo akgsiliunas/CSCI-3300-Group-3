@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour {
 	[SerializeField]
 	private WeaponType _type;
 
-    public Player player;
+    public ParticleSystem explosion;
 
 	public WeaponType type{
 		get{
@@ -31,6 +31,21 @@ public class Projectile : MonoBehaviour {
 			Destroy (this.gameObject);
 	}
 
-    
+    public void Die()
+    {
+        this.GetComponent<MeshRenderer>().enabled = false;
 
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        // Turn off any bullet trail particle systems
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.tag == "BulletTrail")
+                Destroy(child.gameObject);
+        }
+                
+        explosion.Play();
+
+        Destroy(this.gameObject,3f);
+    }
 }

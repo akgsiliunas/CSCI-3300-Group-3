@@ -3,15 +3,14 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 2.0f * UIManager.UM.DiffLevel;
-    public float fireRate = 0.3f * UIManager.UM.DiffLevel;
-    public float health = 10 * UIManager.UM.DiffLevel;
+    public float speed = 2.0f;
+    public float fireRate = 0.3f;
+    public float health = 10;
+
     public int score;
     public float collideDamage = 50f;
 
     public float powerUpDropChance = 1f;
-
-    public bool _____________________;
 
     public enum Movement { Left, Right, Top, Bottom};
     public Movement movement;
@@ -21,29 +20,24 @@ public class Enemy : MonoBehaviour
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
+    public delegate void BossCountDelegate();
+    public BossCountDelegate bossCountDelegate;
+
     public ParticleSystem deathPS;
 
     private bool isDead = false;
 
-    public virtual void Start()
+    protected virtual void Start()
     {
-        //Debug.Log("speed: " + this.speed);
-        deathPS.Pause();
+        //speed = speed * UIManager.UM.DiffLevel;
+        //fireRate = fireRate * UIManager.UM.DiffLevel;
+        //health = 10 * UIManager.UM.DiffLevel;
+
         Orient();
-        //FreezeContraints();
-        //Debug.Log("health: " + health);
-        //Debug.Log("Rate: " + fireRate);
-    }
-
-    public virtual void Fire() {
-
-        if (fireDelegate != null)
-            fireDelegate();
     }
 
     void Update()
     {
-        Debug.Log(movement);
         Move();
     }
 
@@ -63,7 +57,6 @@ public class Enemy : MonoBehaviour
         else
             tempPos.z -= 1 * speed * Time.deltaTime;
 
-        Debug.Log("speed2: " + this.speed);
         pos = tempPos;
     }
 
@@ -94,28 +87,6 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(-90, -180, 0));
     }
 
-    /*
-    void OnCollisionEnter(Collision collider)
-    {
-        GameObject other = collider.gameObject;
-
-        if (other.tag == "ProjectileHero")
-        {
-            Projectile p = other.GetComponent<Projectile>();
-            health -= Main.W_DEFS[p.type].damageOnHit;
-
-            //Debug.Log(Main.W_DEFS[p.type]);
-
-            Destroy(other);
-
-            if (health < 0)
-            {
-                Die(); 
-            }
-        }
-    }
-    */
-
     public void GatherHit(GameObject other)
     {
         Projectile p = other.GetComponent<Projectile>();
@@ -128,16 +99,44 @@ public class Enemy : MonoBehaviour
 
             if (isDead == false)
             {
-                Main.S.ShipDestroyed(this);
+                Main.S.ShipDestroyed(powerUpDropChance, this.transform.position);
                 isDead = true;
             }
         }
     }
 
+
+    public virtual void Fire()
+    {
+
+        if (fireDelegate != null)
+            fireDelegate();
+    }
+
+    public void CollisionDie()
+    {
+        deathPS.Play();
+        Destroy(this.gameObject);
+    }
+
     public void Die()
     {
+        if (bossCountDelegate != null)
+            bossCountDelegate();
+
+        // Turn off all mesh renderers and colliders on models
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Collider>() != null)
+                child.GetComponent<Collider>().enabled = false;
+            if (child.GetComponent<MeshRenderer>() != null)
+                child.GetComponent<MeshRenderer>().enabled = false;
+        }
+
         deathPS.Play();
         Destroy(this.gameObject, 0.7f);
     }
+
+
 
 }

@@ -30,9 +30,15 @@ public class Player : MonoBehaviour
         weapons[0].SetType(WeaponType.blaster);
     }
 
+    void OnColliderEnter(Collider co)
+    {
+        Debug.Log(co.gameObject.name);
+    }
+
+
     public virtual void Update()
     {
-
+       // Debug.Log(shieldLevel);
     }
     
     /*
@@ -61,12 +67,17 @@ public class Player : MonoBehaviour
         {
            // Debug.Log("jasdfowaefjws");
             shieldLevel--;
-            Destroy(other.transform.root.gameObject);
+            //Destroy(other.transform.root.gameObject);
+            other.GetComponent<Projectile>().Die();
         }
         if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
-            Destroy(other.transform.root.gameObject);
+
+            other.transform.root.gameObject.GetComponent<Enemy>().Die();
+
+          // other.GetComponent<Enemy>().deathPS.Play();
+           // Destroy(other.transform.root.gameObject);
         }
         else if (other.transform.root.tag == "PowerUp")
         {
@@ -98,7 +109,7 @@ public class Player : MonoBehaviour
     public void AddShieldLevel(int amount)
     {
         _shieldLevel = Mathf.Min(maxShieldStrength, _shieldLevel + amount);
-        Debug.Log(_shieldLevel);
+      //  Debug.Log(_shieldLevel);
     }
 
     public void AbsorbPowerUp(GameObject go)
@@ -107,7 +118,13 @@ public class Player : MonoBehaviour
         switch (pu.type)
         {
             case WeaponType.shield:
-                shieldLevel++;
+                WeaponDefinition shieldDef = Main.GetWeaponDefinition(WeaponType.shield);
+                _shieldLevel += shieldDef.shieldValue;
+                break;
+
+            case WeaponType.repair:
+                WeaponDefinition repairDef = Main.GetWeaponDefinition(WeaponType.repair);
+                Core.C.Repair(repairDef.repairValue);
                 break;
 
             default:

@@ -10,22 +10,38 @@ UI for difficulty setting
 Beautify start screen
 Apply global difficulty constant to scores
 Balance difficulty constant
---Install bumpers
---Change aspect ratio to 4:3
 Reduce player movement sensitivity
 Restart game after high score scene
 Fix "1st place" bug in high score scene
 Create demo video package
-Fix multiple powerup drop bug
-Redesign Powerup asthetics
-Add missles
---Fix getting stuck on rotor bug
-Make spawn manager
-Create wave spawn mechanic
-Create boss spawn mechanic
 Create vertical core health bar
 Create vertical wave timer bar
 Create 4 shield health bars for players
 Wrap cabinet in duct tape
 Drill in holes and install joysticks
-Implement Xbox controller support.
+Implement Xbox controller support
+
+--Change aspect ratio to 4:3
+--Install bumpers
+--Fix multiple powerup drop bug
+--Add missiles
+--Add bomblast/nuke type 
+--Fix getting stuck on rotor bug
+--Make spawn manager
+--Create wave spawn mechanic
+--Create boss spawn mechanic
+--Add phaser weapon
+--Create form-fitting shields
+--Create boss fights
+--set-up virus boss
+--Rework Boss Stage spawning from timer to objective count type system
+--set-up rook
+--Redesign Powerup asthetics
+--fix bullets that don't dissappear on contact
+--add projectile explosion effects
+--fix projectile initial spawn issues
+--redesigned player shields
+--added custom music to the game
+
+
+
