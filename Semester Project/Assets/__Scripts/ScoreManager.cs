@@ -9,7 +9,9 @@ public class ScoreManager : MonoBehaviour
 	
 	[SerializeField]
 	private ScoreStat globalScoreStat;
-	
+
+
+   
 	public void addScore(float addedScore)
 	{
 		globalScore += (int)(addedScore*UIManager.UM.DiffLevel/2);
@@ -25,7 +27,23 @@ public class ScoreManager : MonoBehaviour
 	// Ensures the ScoreManager game object is not destroyed when a new game is loaded
 	void Awake()
 	{
-		SM = this;
+        if (DifficultyScript.Difficulty == 0)
+        {
+            Debug.Log("EASY MODE");
+        }
+        else if (DifficultyScript.Difficulty == 1)
+        {
+            Debug.Log("MEDIUM MODE");
+        }
+        else if (DifficultyScript.Difficulty == 2)
+        {
+            Debug.Log("HARD MODE");
+        }
+        else if (DifficultyScript.Difficulty == 3)
+        {
+            Debug.Log("VERY HARD MODE");
+        }
+        SM = this;
 		globalScoreStat.Initialize();
         DontDestroyOnLoad(transform.gameObject);
     }
