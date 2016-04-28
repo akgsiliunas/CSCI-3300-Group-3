@@ -29,7 +29,16 @@ public class UIManager : MonoBehaviour
     public GameObject shield2;
     public GameObject shield3;
     public GameObject shield4;
-
+	
+	public float player1GlobalHealth;
+	
+	public GameObject canvasMainPrefab;
+	
+	public Vector3 hero1HealthBarPosition = new Vector3(0, 0, 0);
+	
+	public GameObject hero1HealthBarPrefab;
+	//public Image hero1HealthBarPrefab;
+	
     //public static readonly float Tutorial = 0.01f;
     //public static readonly float Easy = 1;
     //public static readonly float Normal = 20;
@@ -139,10 +148,16 @@ public class UIManager : MonoBehaviour
 
     public void Stage()
     {
+		GameObject canvasMain = Instantiate(canvasMainPrefab) as GameObject; //
         if (player1 == true)
         {
             GameObject player = Instantiate(player1Prefab) as GameObject;
             player.transform.position = player1Position;
+			//GameObject hero1HealthBar = Instantiate(hero1HealthBarPrefab) as GameObject;
+			//Image hero1HealthBar = Instantiate(hero1HealthBarPrefab) as Image;
+			//player.health.bar = hero1HealthBar;
+			//hero1HealthBar.transform.SetParent(canvasMain.transform, false);
+			//hero1HealthBar.transform.position = hero1HealthBarPosition;
         }
         if (player2 == true)
         {

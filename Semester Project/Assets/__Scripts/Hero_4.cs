@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Hero_4 : Player {
-
-    public override void Update()
+/*
+    public void Update()
     {
         float xAxis = Input.GetAxis("Hero_4_Horizontal");
         float zAxis = Input.GetAxis("Hero_4_Vertical");
@@ -16,4 +16,5 @@ public class Hero_4 : Player {
         if (Input.GetKey("o") == true && fireDelegate != null)
             fireDelegate();
     }
+	*/
 }
