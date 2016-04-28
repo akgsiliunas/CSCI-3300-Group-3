@@ -31,8 +31,29 @@ public class Regenerator : MonoBehaviour {
         {
             timeChange = 0f;
             //hero.transform.root.GetComponent<Player>().AddShieldLevel(regenAmount);
-			hero.transform.root.GetComponent<Hero_1>().AddShieldLevel(regenAmount);
-			Hero1Manager.H1.addHealth((float)regenAmount);
+			if (hero.transform.root.GetComponent<Hero_1>())
+			{
+				hero.transform.root.GetComponent<Hero_1>().AddShieldLevel(regenAmount);
+				Hero1Manager.H1.addHealth((float)regenAmount);
+			}
+			
+			if (hero.transform.root.GetComponent<Hero_2>())
+			{
+				hero.transform.root.GetComponent<Hero_2>().AddShieldLevel(regenAmount);
+			  	Hero2Manager.H2.addHealth((float)regenAmount);
+			}
+			
+			if (hero.transform.root.GetComponent<Hero_3>())
+			{
+				hero.transform.root.GetComponent<Hero_3>().AddShieldLevel(regenAmount);
+			  	Hero3Manager.H3.addHealth((float)regenAmount);
+			}
+			
+			if (hero.transform.root.GetComponent<Hero_4>())
+			{
+				hero.transform.root.GetComponent<Hero_4>().AddShieldLevel(regenAmount);
+			  	Hero4Manager.H4.addHealth((float)regenAmount);
+			}
         }
         else
             timeChange += Time.deltaTime;

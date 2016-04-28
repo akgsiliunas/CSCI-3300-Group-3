@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Hero2Manager : MonoBehaviour
 {
-	static public Hero2Manager H2;
+	public static Hero2Manager H2;
 	
-	public int globalHero2Health;
+	public static int globalHero2Health;
 	
 	[SerializeField]
 	private Stat globalHero2Stat;

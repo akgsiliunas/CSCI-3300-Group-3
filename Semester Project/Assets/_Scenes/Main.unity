@@ -5982,7 +5982,7 @@ MonoBehaviour:
   globalHero2Stat:
     bar: {fileID: 133778813}
     maxVal: 500
-    currentVal: 300
+    currentVal: 0
 --- !u!4 &1024637908
 Transform:
   m_ObjectHideFlags: 0
@@ -8991,7 +8991,7 @@ MonoBehaviour:
   globalHero3Stat:
     bar: {fileID: 1242821315}
     maxVal: 500
-    currentVal: 300
+    currentVal: 0
 --- !u!4 &1734748767
 Transform:
   m_ObjectHideFlags: 0
@@ -9596,7 +9596,7 @@ MonoBehaviour:
   globalHero4Stat:
     bar: {fileID: 532325858}
     maxVal: 500
-    currentVal: 300
+    currentVal: 0
 --- !u!4 &1861954122
 Transform:
   m_ObjectHideFlags: 0
@@ -9692,7 +9692,7 @@ MonoBehaviour:
   globalHero1Stat:
     bar: {fileID: 1629144371}
     maxVal: 500
-    currentVal: 300
+    currentVal: 0
 --- !u!4 &1935739391
 Transform:
   m_ObjectHideFlags: 0
