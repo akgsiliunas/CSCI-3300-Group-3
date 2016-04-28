@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float speed = 30;
 
     [SerializeField]
-    public float _shieldLevel = 1;
+    public float _shieldLevel = 300;
     public float maxShieldStrength = 50f;
 	
 	//[SerializeField]
@@ -128,13 +128,11 @@ public class Player : MonoBehaviour
         PowerUp pu = go.GetComponent<PowerUp>();
         switch (pu.type)
         {	
-		/*
             case WeaponType.shield:
                 WeaponDefinition shieldDef = Main.GetWeaponDefinition(WeaponType.shield);
                 _shieldLevel += shieldDef.shieldValue;
 				//health.CurrentVal = _shieldLevel;
                 break;
-		*/
             case WeaponType.repair:
                 WeaponDefinition repairDef = Main.GetWeaponDefinition(WeaponType.repair);
                 Core.C.Repair(repairDef.repairValue);
