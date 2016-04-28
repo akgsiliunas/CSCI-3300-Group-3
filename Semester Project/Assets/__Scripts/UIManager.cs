@@ -153,11 +153,6 @@ public class UIManager : MonoBehaviour
         {
             GameObject player = Instantiate(player1Prefab) as GameObject;
             player.transform.position = player1Position;
-			//GameObject hero1HealthBar = Instantiate(hero1HealthBarPrefab) as GameObject;
-			//Image hero1HealthBar = Instantiate(hero1HealthBarPrefab) as Image;
-			//player.health.bar = hero1HealthBar;
-			//hero1HealthBar.transform.SetParent(canvasMain.transform, false);
-			//hero1HealthBar.transform.position = hero1HealthBarPosition;
         }
         if (player2 == true)
         {
