@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero_4 : Player {
-
+public class Hero_4 : Player
+{
+    void OnEnable()
+    {
+        if (!UIManager.player4)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
     public override void Update()
     {
         float xAxis = Input.GetAxis("Hero_4_Horizontal");
