@@ -3,6 +3,13 @@ using System.Collections;
 
 public class Hero_3 : Player {
 
+    void OnEnable()
+    {
+        if (!UIManager.player3)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
     public override void Update()
     {
         float xAxis = Input.GetAxis("Hero_3_Horizontal");
