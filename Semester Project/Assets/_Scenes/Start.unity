@@ -421,6 +421,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -663,6 +664,9 @@ MonoBehaviour:
   shield2: {fileID: 1500683820}
   shield3: {fileID: 55388242}
   shield4: {fileID: 1929336288}
+  canvasMainPrefab: {fileID: 193068, guid: 904837ec4c508774dbff0ffc02331de0, type: 2}
+  hero1HealthBarPosition: {x: 60, y: 117.38, z: 0}
+  hero1HealthBarPrefab: {fileID: 112364, guid: bf470d04f69882e42958b065520f8713, type: 2}
   DiffLevel: 0
   TestMode: 0
   DebugMode: 0

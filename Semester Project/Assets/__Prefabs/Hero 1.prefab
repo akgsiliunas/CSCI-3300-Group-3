@@ -1413,11 +1413,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 495774}
@@ -1441,11 +1444,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 481098}
@@ -1469,11 +1475,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 470624}
@@ -1491,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  _shieldLevel: 500
+  _shieldLevel: 300
   maxShieldStrength: 500
   weapons:
   - {fileID: 11417496}
@@ -1519,11 +1528,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 413730}
@@ -1562,11 +1574,14 @@ MonoBehaviour:
     letter: 
     color: {r: 1, g: 1, b: 1, a: 1}
     projectilePrefab: {fileID: 0}
+    weaponGraphic: {fileID: 0}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 20
+    repairValue: 0
+    shieldValue: 0
   collar: {fileID: 0}
   lastShot: 0
   left: {fileID: 429698}

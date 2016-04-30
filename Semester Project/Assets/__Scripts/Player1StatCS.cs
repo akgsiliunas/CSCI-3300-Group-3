@@ -1,15 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 
 [Serializable]
-public class Stat
-{	
+public class Player1Stat
+{
 	[SerializeField]
-	public BarScript bar;
-	
-	//[SerializeField]
-	//private ScoreBarScript sBar;
+	private Player1BarScript p1Bar;
 	
 	[SerializeField]
 	private float maxVal;
@@ -27,8 +24,7 @@ public class Stat
 		set
 		{
 			this.currentVal = Mathf.Clamp(value, 0, MaxVal);
-			bar.Value = currentVal;
-			//sBar.Value = currentVal;
+			p1Bar.Value = currentVal;
 		}
 	}
 	
@@ -42,8 +38,7 @@ public class Stat
 		set
 		{
 			this.maxVal = value;
-			bar.MaxValue = maxVal;
-			//sBar.MaxValue = maxVal;
+			p1Bar.MaxValue = maxVal;
 		}
 	}
 	
