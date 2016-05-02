@@ -4,7 +4,7 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
 	static public ScoreManager SM;
-	
+
 	public int globalScore;
 	
 	[SerializeField]
@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
 	
 	public void addScore(float addedScore)
 	{
-		globalScore += (int)(addedScore*UIManager.UM.DiffLevel/2);
+		globalScore += (int)(addedScore*DiffLevel.DL.DiffLevels/2);
 		Debug.Log ("now score is: " + globalScore);
 		globalScoreStat.CurrentVal = globalScore;
 	}

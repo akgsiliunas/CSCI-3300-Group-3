@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     //public static readonly float Hard = 300;
     //public static readonly float ExtremelyHard = 4000;
 
-    public float DiffLevel;
+//    public float DiffLevel;
 
     
 
@@ -72,30 +72,30 @@ public class UIManager : MonoBehaviour
 
         if (startScreen == true)
         {      
-            if (Input.GetKey("z") == true)
-            {
-                DiffLevel = 0.5f;
-            }
-
-            if (Input.GetKey("x") == true)
-            {
-                DiffLevel = 1;
-            }
-
-            if (Input.GetKey("c") == true)
-            {
-                DiffLevel = 2;
-            }
-
-            if (Input.GetKey("v") == true)
-            {
-                DiffLevel = 3;
-            }
-
-            if (Input.GetKey("b") == true)
-            {
-                DiffLevel = 4;
-            }
+//            if (Input.GetKey("z") == true)
+//            {
+//                DiffLevels = 0.5f;
+//            }
+//
+//            if (Input.GetKey("x") == true)
+//            {
+//                DiffLevels = 1;
+//            }
+//
+//            if (Input.GetKey("c") == true)
+//            {
+//                DiffLevels = 2;
+//            }
+//
+//            if (Input.GetKey("v") == true)
+//            {
+//                DiffLevels = 3;
+//            }
+//
+//            if (Input.GetKey("b") == true)
+//            {
+//                DiffLevels = 4;
+//            }
 
             if (Input.GetKey("1") == true && player1 == false)
             {
