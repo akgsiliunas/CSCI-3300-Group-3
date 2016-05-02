@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 
-        if (Application.loadedLevel == 1 && staged == false)
+        if (Application.loadedLevel == 2 && staged == false)
         {
             Stage();
             staged = true;
