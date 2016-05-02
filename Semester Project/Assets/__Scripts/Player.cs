@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
     public float speed = 30;
 
     [SerializeField]
-    private float _shieldLevel = 1;
+    public float _shieldLevel = 300;
     public float maxShieldStrength = 50f;
+	
+	//[SerializeField]
+	//private Stat health;
 
     //Weapon Fields
     public Weapon[] weapons;
 
+	
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
@@ -21,9 +25,9 @@ public class Player : MonoBehaviour
     public int regenAmount = 1;
     private float timeChange = 0f;
 
- 
-
-
+	
+	
+	
     void Start()
     {
         ClearWeapons();
@@ -34,8 +38,9 @@ public class Player : MonoBehaviour
     {
         Debug.Log(co.gameObject.name);
     }
-
-
+	
+	
+	
     public virtual void Update()
     {
        // Debug.Log(shieldLevel);
@@ -58,7 +63,9 @@ public class Player : MonoBehaviour
             timeChange += Time.deltaTime;
     }
     */
-
+	
+	
+	
     void OnTriggerEnter(Collider other)
     {
         //GameObject rootGameObject = Utils.FindTaggedParent(other.gameObject);
@@ -67,12 +74,14 @@ public class Player : MonoBehaviour
         {
            // Debug.Log("jasdfowaefjws");
             shieldLevel--;
+			//health.CurrentVal = _shieldLevel;
             //Destroy(other.transform.root.gameObject);
             other.GetComponent<Projectile>().Die();
         }
         if (other.transform.root.tag == "Enemy")
         {
             shieldLevel--;
+			//health.CurrentVal = _shieldLevel;
 
             other.transform.root.gameObject.GetComponent<Enemy>().Die();
 
@@ -98,6 +107,7 @@ public class Player : MonoBehaviour
         set
         {
             _shieldLevel = Mathf.Min(value, maxShieldStrength);
+			//health.CurrentVal = _shieldLevel;
             if (value < 0)
             {
                 Destroy(this.gameObject);
@@ -109,6 +119,7 @@ public class Player : MonoBehaviour
     public void AddShieldLevel(int amount)
     {
         _shieldLevel = Mathf.Min(maxShieldStrength, _shieldLevel + amount);
+		//health.CurrentVal = _shieldLevel;
       //  Debug.Log(_shieldLevel);
     }
 
@@ -116,12 +127,12 @@ public class Player : MonoBehaviour
     {
         PowerUp pu = go.GetComponent<PowerUp>();
         switch (pu.type)
-        {
+        {	
             case WeaponType.shield:
                 WeaponDefinition shieldDef = Main.GetWeaponDefinition(WeaponType.shield);
                 _shieldLevel += shieldDef.shieldValue;
+				//health.CurrentVal = _shieldLevel;
                 break;
-
             case WeaponType.repair:
                 WeaponDefinition repairDef = Main.GetWeaponDefinition(WeaponType.repair);
                 Core.C.Repair(repairDef.repairValue);
@@ -146,6 +157,8 @@ public class Player : MonoBehaviour
         pu.AbsorbedBy(this.gameObject);
     }
 
+	
+	
     Weapon GetEmptyWeaponSlot()
     {
         for (int i = 0; i < weapons.Length; i++)
@@ -164,7 +177,8 @@ public class Player : MonoBehaviour
         }
     }
 
+	
 
 
-
+	
 }
