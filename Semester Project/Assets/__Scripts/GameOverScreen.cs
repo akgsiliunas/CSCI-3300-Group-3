@@ -75,7 +75,7 @@ public class GameOverScreen : MonoBehaviour
                     Debug.Log(PlayerPrefs.GetString("score"));
                 }
 
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(4);
 
             }
         }

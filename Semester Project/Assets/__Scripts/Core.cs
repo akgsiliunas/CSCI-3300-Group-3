@@ -73,6 +73,6 @@ public class Core : MonoBehaviour {
     {
         yield return new WaitForSeconds(5);
         Debug.Log("Here is game over"); // Abdullah edit it
-        Application.LoadLevel(2);
+        Application.LoadLevel(3);
     }
 }
